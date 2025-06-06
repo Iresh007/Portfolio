@@ -104,13 +104,24 @@
             background-color: #e0e7ff;
             color: #4f46e5;
         }
+        .certification-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem; /* space-x-3 */
+            margin-bottom: 0.5rem; /* space-y-1 equivalent for list items */
+        }
+        .certification-item img {
+            width: 32px; /* w-8 */
+            height: 32px; /* h-8 */
+            object-fit: contain;
+        }
     </style>
 </head>
 <body class="text-gray-800 antialiased">
     <div class="min-h-screen flex flex-col items-center py-8 px-4 sm:px-6 lg:px-8">
         <header class="w-full max-w-5xl bg-white p-6 rounded-xl shadow-md mb-8 text-center">
             <div class="flex flex-col sm:flex-row items-center justify-center sm:justify-start mb-4">
-                <!-- Image source updated to reference local file directly -->
+                <!-- Image source updated for local viewing -->
                 <img src="Pi7_Passport_Photo.jpeg"
                      onerror="this.onerror=null;this.src='https://placehold.co/120x120/E0E7FF/4F46E5?text=Iresh';"
                      alt="Iresh Agrawal Passport Photo"
@@ -282,11 +293,40 @@
                     </div>
                     <div>
                         <h3 class="text-lg font-semibold text-gray-800 mb-2">Certifications</h3>
-                        <ul class="list-disc list-inside text-gray-700 space-y-1">
-                            <li>Microsoft Certified: Azure Data Engineer Associate (DP-203)</li>
-                            <li>Microsoft Certified: Azure Fundamentals (AZ-900)</li>
-                            <li>Databricks: Generative AI Fundamentals</li>
-                            <li>Capgemini: Jr. Data Engineer (Level 1 and 2) and Data Engineer Level 1</li>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li class="certification-item">
+                                <!-- Fabric Analytics Engineer Associate Badge -->
+                                <img src="fabric.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/32x32/6366f1/ffffff?text=Badge';" alt="Microsoft Certified Fabric Analytics Engineer Associate Badge" class="w-8 h-8 rounded-full border border-indigo-300">
+                                <a href="https://learn.microsoft.com/api/credentials/share/en-us/IreshAgrawal-1361/FBA4562DEE33025F?sharingId=4760308E24E54F0C" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">
+                                    Microsoft Certified: Fabric Analytics Engineer Associate
+                                </a>
+                            </li>
+                            <li class="certification-item">
+                                <!-- Azure Fundamentals Badge -->
+                                <img src="Fundamentals.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/32x32/6366f1/ffffff?text=Badge';" alt="Microsoft Certified Badge Azure Fundamentals" class="w-8 h-8 rounded-full border border-indigo-300">
+                                <a href="https://learn.microsoft.com/api/credentials/share/en-us/IreshAgrawal-1361/974F69021B0DA09D?sharingId=4760308E24E54F0C" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">
+                                    Microsoft Certified: Azure Fundamentals
+                                </a>
+                            </li>
+                            <li class="certification-item">
+                                <!-- Azure Data Engineer Associate Badge -->
+                                <img src="associate.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/32x32/6366f1/ffffff?text=Badge';" alt="Microsoft Certified Badge Azure Data Engineer Associate" class="w-8 h-8 rounded-full border border-indigo-300">
+                                <a href="https://learn.microsoft.com/api/credentials/share/en-us/IreshAgrawal-1361/E62B1E4E8EE38CF2?sharingId=4760308E24E54F0C" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">
+                                    Microsoft Certified: Azure Data Engineer Associate
+                                </a>
+                            </li>
+                            <!-- Databricks Certification -->
+                            <li class="certification-item">
+                                <img src="Generative-AI-fundamentals.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/32x32/6366f1/ffffff?text=Badge';" alt="Databricks Generative AI Fundamentals Badge" class="w-8 h-8 rounded-full border border-indigo-300">
+                                <a href="https://credentials.databricks.com/ecb9e6b1-d9f8-46a9-ac93-bb97d90b6895#acc.OzP3EoQ2" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">
+                                    Databricks: Generative AI Fundamentals
+                                </a>
+                            </li>
+                            <li class="certification-item">
+                                <!-- Capgemini Badge -->
+                                <img src="Capgemini.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/32x32/6366f1/ffffff?text=Badge';" alt="Capgemini Badge" class="w-8 h-8 rounded-full border border-indigo-300">
+                                Capgemini: Jr. Data Engineer (Level 1 and 2) and Data Engineer Level 1
+                            </li>
                         </ul>
                     </div>
                 </section>
@@ -446,12 +486,6 @@
                 hideContactModal();
             }
         }
-
-        // The previous sendEmail function is now removed as Formspree handles the submission
-        // Formspree will typically redirect the user to a "Thank You" page or a custom page after submission.
-        // For a seamless modal experience (e.g., closing the modal and showing a success message without redirect),
-        // you would use JavaScript's Fetch API to send the form data asynchronously.
-        // However, for direct integration with the provided Formspree action, a simple POST submission is sufficient.
     </script>
 </body>
 </html>
