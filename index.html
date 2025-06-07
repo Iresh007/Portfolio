@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,343 +7,402 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts - Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Feather Icons for a cleaner look -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
     <style>
+        /* ==========================================
+        Enhanced Portfolio Styles
+        Inspired by modern, clean web design.
+        ==========================================
+        */
+
+        :root {
+            /* Color Palette - Light Mode */
+            --bg-light: #F9FAFB; /* Off-white background (Tailwind gray-50) */
+            --card-bg-light: #FFFFFF;
+            --text-primary-light: #111827; /* gray-900 */
+            --text-secondary-light: #4B5563; /* gray-600 */
+            --accent-light: #4F46E5; /* indigo-600 */
+            --accent-hover-light: #4338CA; /* indigo-700 */
+            --border-light: #E5E7EB; /* gray-200 */
+            --shadow-color-light: 220, 224, 230;
+
+            /* Color Palette - Dark Mode */
+            --bg-dark: #0D1117; /* Very dark blue-gray, like GitHub */
+            --card-bg-dark: #161B22; /* Slightly lighter than bg */
+            --text-primary-dark: #E5E7EB; /* gray-200 */
+            --text-secondary-dark: #9CA3AF; /* gray-400 */
+            --accent-dark: #6366F1; /* indigo-500 */
+            --accent-hover-dark: #818CF8; /* indigo-400 */
+            --border-dark: #30363D; /* Darker border */
+            --shadow-color-dark: 0, 0, 0;
+        }
+
+        html[data-theme='light'] {
+            --bg-color: var(--bg-light);
+            --card-bg-color: var(--card-bg-light);
+            --text-primary: var(--text-primary-light);
+            --text-secondary: var(--text-secondary-light);
+            --accent-color: var(--accent-light);
+            --accent-hover: var(--accent-hover-light);
+            --border-color: var(--border-light);
+            --shadow-rgb: var(--shadow-color-light);
+        }
+
+        html[data-theme='dark'] {
+            --bg-color: var(--bg-dark);
+            --card-bg-color: var(--card-bg-dark);
+            --text-primary: var(--text-primary-dark);
+            --text-secondary: var(--text-secondary-dark);
+            --accent-color: var(--accent-dark);
+            --accent-hover: var(--accent-hover-dark);
+            --border-color: var(--border-dark);
+            --shadow-rgb: var(--shadow-color-dark);
+        }
+        
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6; /* Light gray background */
+            background-color: var(--bg-color);
+            color: var(--text-secondary);
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
-        .section-heading {
-            border-bottom: 2px solid #6366f1; /* Indigo border for headings */
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-            font-size: 1.75rem; /* Equivalent to text-3xl */
-            font-weight: 700; /* Equivalent to font-bold */
-            color: #1f2937; /* Darker text color */
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--text-primary);
+            font-weight: 700;
         }
+
+        /* Global container and layout */
+        .page-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Card Styling */
         .card {
-            background-color: #ffffff;
-            border-radius: 0.75rem; /* rounded-xl */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+            background-color: var(--card-bg-color);
+            border-radius: 1rem; /* Softer, larger radius (rounded-2xl) */
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(var(--shadow-rgb), 0.07), 0 2px 4px -2px rgba(var(--shadow-rgb), 0.07);
+            transition: all 0.4s ease;
         }
-        .experience-item {
-            border-left: 3px solid #6366f1; /* Indigo border for experience items */
-            padding-left: 1rem;
-            margin-bottom: 1rem;
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(var(--shadow-rgb), 0.1), 0 4px 6px -4px rgba(var(--shadow-rgb), 0.1);
         }
-        /* Custom scrollbar for better aesthetics */
-        ::-webkit-scrollbar {
-            width: 8px;
+
+        /* Header Styles */
+        .header-card {
+            padding: 2rem;
         }
-        ::-webkit-scrollbar-track {
-            background: #f3f4f6;
-            border-radius: 10px;
+        
+        #profile-image {
+             border: 4px solid var(--accent-color);
+             transition: border-color 0.4s ease;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #a78bfa; /* Lighter indigo */
-            border-radius: 10px;
+
+        /* Section Heading */
+        .section-heading {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 1.5rem;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #6366f1; /* Darker indigo on hover */
-        }
-        /* Style for the contact form modal */
-        .contact-modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1000; /* Sit on top */
+
+        .section-heading::before {
+            content: '';
+            position: absolute;
             left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            top: 50%;
+            transform: translateY(-50%);
+            height: 80%;
+            width: 5px;
+            background-color: var(--accent-color);
+            border-radius: 4px;
+            transition: background-color 0.4s ease;
+        }
+
+        /* Navigation Tabs */
+        .nav-container {
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .nav-item {
+            cursor: pointer;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover {
+            background-color: rgba(var(--shadow-rgb), 0.05);
+            color: var(--text-primary);
+        }
+
+        .nav-item.active {
+            background-color: var(--accent-color);
+            color: white;
+            font-weight: 600;
+        }
+        
+        html[data-theme='dark'] .nav-item.active {
+            color: var(--text-primary);
+            background-color: var(--accent-hover);
+        }
+        
+        html[data-theme='dark'] h1, html[data-theme='dark'] h2, html[data-theme='dark'] h3 {
+             color: var(--text-primary-dark);
+        }
+        
+        /* Links & Buttons */
+        .primary-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+        .primary-link:hover {
+            color: var(--accent-color);
+        }
+
+        .primary-button {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--accent-color);
+            color: white;
+            font-weight: 600;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(var(--shadow-rgb), 0.1), 0 2px 4px -2px rgba(var(--shadow-rgb), 0.06);
+            border: 1px solid transparent;
+        }
+        
+        html[data-theme='dark'] .primary-button {
+             color: var(--text-primary-dark);
+        }
+
+        .primary-button:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 7px 10px -3px rgba(var(--shadow-rgb), 0.15), 0 4px 6px -4px rgba(var(--shadow-rgb), 0.1);
+        }
+
+        /* Experience Timeline */
+        .experience-timeline {
+            position: relative;
+            padding-left: 3rem; /* Increased padding to create space */
+            border-left: 3px solid var(--border-color);
+            transition: border-color 0.4s ease;
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+        
+        .experience-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            /* Recalculated 'left' to align with the new padding */
+            left: calc(-3rem - 7px + 1.5px);
+            top: 7px; /* Adjusted for better vertical alignment with the title */
+            width: 14px;
+            height: 14px;
+            background-color: var(--bg-color);
+            border: 3px solid var(--accent-color);
+            border-radius: 50%;
+            z-index: 1;
+            transition: all 0.4s ease;
+        }
+        
+        .experience-item h3 { color: var(--text-primary); }
+        .experience-item .company { color: var(--accent-color); font-weight: 500; }
+        .experience-item .details { color: var(--text-secondary); font-size: 0.9rem; }
+        
+        /* Certification List */
+        .certification-item img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            background-color: var(--card-bg-light); /* Keep light bg for visibility */
+            padding: 4px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            flex-shrink: 0;
+        }
+        html[data-theme='dark'] .certification-item img {
+             background-color: #fff;
+        }
+
+        /* Skills Section */
+        #skills .grid > div {
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
+        #skills .grid > div:hover {
+            border-color: var(--accent-color);
+            transform: scale(1.03);
+        }
+
+        /* Theme Toggle Button */
+        #themeToggle {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            background-color: rgba(var(--shadow-rgb), 0.05);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        #themeToggle:hover {
+            color: var(--text-primary);
+            border-color: var(--accent-color);
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        /* Modal */
+        #contactModal {
+            background-color: rgba(17, 24, 39, 0.6); /* gray-900 with opacity */
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
         }
         .contact-modal-content {
-            background-color: #fefefe;
-            margin: auto;
-            padding: 2.5rem; /* Increased padding */
-            border-radius: 0.75rem; /* rounded-xl */
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow */
-            max-width: 90%; /* Responsive width */
-            width: 500px; /* Max width */
-            animation: fadeIn 0.3s ease-out; /* Simple fade-in animation */
+            background-color: var(--card-bg-color);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 25px 50px -12px rgba(var(--shadow-rgb), 0.25);
+            animation: fadeIn 0.3s ease-out;
+            max-width: 550px;
         }
+        .contact-modal-content input, .contact-modal-content textarea {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            width: 100%; /* Ensure inputs take full width */
+        }
+        .contact-modal-content input:focus, .contact-modal-content textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2); /* Use static color for simplicity */
+        }
+        html[data-theme='dark'] .contact-modal-content input:focus,
+        html[data-theme='dark'] .contact-modal-content textarea:focus {
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+        }
+        .close-button {
+            color: var(--text-secondary);
+        }
+        .close-button:hover {
+            color: var(--text-primary);
+        }
+
+        /* Helper classes */
+        .hidden { display: none; }
+        
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .close-button {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close-button:hover,
-        .close-button:focus {
-            color: #000;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .nav-item {
-            cursor: pointer;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .nav-item.active {
-            background-color: #6366f1;
-            color: white;
-            font-weight: 600;
-        }
-        .nav-item:not(.active):hover {
-            background-color: #e0e7ff;
-            color: #4f46e5;
-        }
-        .certification-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem; /* space-x-3 */
-            margin-bottom: 0.5rem; /* space-y-1 equivalent for list items */
-        }
-        .certification-item img {
-            width: 32px; /* w-8 */
-            height: 32px; /* h-8 */
-            object-fit: contain;
-        }
     </style>
 </head>
-<body class="text-gray-800 antialiased">
-    <div class="min-h-screen flex flex-col items-center py-8 px-4 sm:px-6 lg:px-8">
-        <header class="w-full max-w-5xl bg-white p-6 rounded-xl shadow-md mb-8 text-center">
-            <div class="flex flex-col sm:flex-row items-center justify-center sm:justify-start mb-4">
-                <!-- Image source updated for local viewing -->
-                <img src="Pi7_Passport_Photo.jpeg"
-                     onerror="this.onerror=null;this.src='https://placehold.co/120x120/E0E7FF/4F46E5?text=Iresh';"
-                     alt="Iresh Agrawal Passport Photo"
-                     class="w-32 h-32 rounded-full object-cover mb-4 sm:mb-0 sm:mr-6 border-4 border-indigo-200 shadow-lg">
-                <div class="text-center sm:text-left">
-                    <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-2">Iresh Agrawal</h1>
-                    <p class="text-xl sm:text-2xl text-indigo-600 font-semibold mb-4">Data Engineer</p>
+<body class="antialiased">
+    <div class="page-container min-h-screen flex flex-col py-8 px-4 sm:px-6 lg:px-8">
+        <header class="w-full card header-card mb-8 text-center relative">
+            <div class="flex flex-col sm:flex-row items-center justify-between sm:pr-16">
+                 <div class="flex flex-col sm:flex-row items-center text-center sm:text-left">
+                     <!-- Main profile photo -->
+                    <a href="Pi7_Passport_Photo.jpeg" download="Iresh_Agrawal_Passport_Photo.jpeg">
+                        <img src="Pi7_Passport_Photo.jpeg"
+                             onerror="this.onerror=null;this.src='https://placehold.co/128x128/E0E7FF/4F46E5?text=Iresh';"
+                             alt="Iresh Agrawal Passport Photo"
+                             id="profile-image"
+                             class="w-32 h-32 rounded-full object-cover mb-4 sm:mb-0 sm:mr-6 shadow-lg">
+                    </a>
+                    <div>
+                        <h1 class="text-4xl sm:text-5xl font-extrabold mb-1">Iresh Agrawal</h1>
+                        <p class="text-xl sm:text-2xl font-semibold mb-4" style="color: var(--accent-color);">Data Engineer</p>
+                    </div>
+                </div>
+                 <div class="flex flex-col items-center sm:items-end gap-2 text-sm sm:text-base mt-4 sm:mt-0">
+                    <a href="tel:+918707481550" class="primary-link">
+                        <i data-feather="phone"></i><span>8707481550</span>
+                    </a>
+                    <a href="mailto:iresh.agrawal23@gmail.com" class="primary-link">
+                       <i data-feather="mail"></i> <span>iresh.agrawal23@gmail.com</span>
+                    </a>
+                    <a href="https://linkedin.com/in/iresh-agrawal23" target="_blank" rel="noopener noreferrer" class="primary-link">
+                        <i data-feather="linkedin"></i><span>LinkedIn</span>
+                    </a>
                 </div>
             </div>
-            <div class="flex flex-wrap justify-center gap-4 text-gray-600 text-sm sm:text-base">
-                <a href="tel:+918707481550" class="flex items-center hover:text-indigo-700 transition-colors">
-                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.774a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.06-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
-                    8707481550
-                </a>
-                <a href="mailto:iresh.agrawal23@gmail.com" class="flex items-center hover:text-indigo-700 transition-colors">
-                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
-                    iresh.agrawal23@gmail.com
-                </a>
-                <a href="https://linkedin.com/in/iresh-agrawal23" target="_blank" rel="noopener noreferrer" class="flex items-center hover:text-indigo-700 transition-colors">
-                    <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.3 3.6c.7 0 1.2.5 1.2 1.2v10.4c0 .7-.5 1.2-1.2 1.2H3.7c-.7 0-1.2-.5-1.2-1.2V4.8c0-.7.5-1.2 1.2-1.2h12.6zm-11.8 4.2h-2v7h2V7.8zm-1 2.5c-.7 0-1.2-.5-1.2-1.2s.5-1.2 1.2-1.2c.7 0 1.2.5 1.2 1.2s-.5 1.2-1.2 1.2zM15 15.8h-2v-3c0-.7-.6-1.2-1.2-1.2s-1.2.5-1.2 1.2v3h-2v-7h2v1.2c.4-.7 1.2-1.2 2-1.2.7 0 1.4.3 2 .8.5.5.8 1.2.8 2.2v4zm-13.8-9.8H15c.7 0 1.2-.5 1.2-1.2s-.5-1.2-1.2-1.2H2.2c-.7 0-1.2.5-1.2 1.2s.5 1.2 1.2 1.2z" clip-rule="evenodd"></path></svg>
-                    LinkedIn
-                </a>
-            </div>
+           
             <!-- Navigation Tabs -->
-            <nav class="mt-6 flex justify-center space-x-4">
-                <span id="nav-resume" class="nav-item active" onclick="showSection('resume-content')">Resume</span>
+            <nav class="nav-container flex justify-center flex-wrap gap-2">
+                <span id="nav-welcome" class="nav-item" onclick="showSection('welcome-content')">Welcome</span>
                 <span id="nav-cover-letter" class="nav-item" onclick="showSection('cover-letter-content')">Cover Letter</span>
+                <span id="nav-resume" class="nav-item active" onclick="showSection('resume-content')">Resume</span>
                 <span id="nav-additional-details" class="nav-item" onclick="showSection('additional-details-content')">Additional Details</span>
             </nav>
+            <!-- Theme Toggle Button -->
+            <button id="themeToggle" title="Toggle Theme">
+                <i data-feather="sun" class="light-icon"></i>
+                <i data-feather="moon" class="dark-icon hidden"></i>
+            </button>
         </header>
 
-        <main class="w-full max-w-5xl space-y-8">
-            <!-- Resume Content Section -->
-            <div id="resume-content" class="active-section">
-                <!-- Summary Section -->
-                <section id="summary" class="card">
-                    <h2 class="section-heading">Summary</h2>
-                    <p class="text-gray-700 leading-relaxed">
-                        Results-driven Data Engineer with 3+ years of expertise in cloud data engineering and ETL development.
-                        Proficient in Azure Data Factory, Databricks, SQL, PySpark for building scalable data pipelines using Medallion architecture.
-                        Demonstrated success in optimizing data workflows, reducing processing times by up to 62.5%, and implementing data
-                        governance frameworks. Collaborative team player experienced in translating business requirements into actionable data
-                        solutions while ensuring high performance and reliability.
+        <main class="w-full flex-grow space-y-8">
+            <!-- Welcome Content Section -->
+            <div id="welcome-content" class="hidden">
+                <section class="card text-center py-10">
+                    <h2 class="text-4xl font-extrabold mb-6">Welcome to My Professional Profile!</h2>
+                    <img src="Pi7_Passport_Photo.jpeg"
+                         onerror="this.onerror=null;this.src='https://placehold.co/200x200/E0E7FF/4F46E5?text=Iresh';"
+                         alt="Iresh Agrawal Large Photo"
+                         class="w-48 h-48 rounded-full object-cover mx-auto mb-6 border-4 shadow-xl"
+                         style="border-color: var(--accent-color);">
+                    <p class="text-xl leading-relaxed max-w-3xl mx-auto">
+                        Hello! I'm Iresh Agrawal, a dedicated Data Engineer with 3+ years of experience.
+                        I'm passionate about building scalable and efficient data solutions.
+                        Explore my profile to learn more about my skills, experience, and achievements.
                     </p>
-                    <!-- Download Resume Button -->
-                    <a href="IreshAgrawal_resume.pdf" download="IreshAgrawal_resume.pdf" class="mt-4 inline-block px-4 py-2 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700 transition-colors">
-                        Download Resume
-                    </a>
-                </section>
-
-                <!-- Skills Section -->
-                <section id="skills" class="card">
-                    <h2 class="section-heading">Skills</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div>
-                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Cloud Platforms</h3>
-                            <ul class="list-disc list-inside text-gray-700 space-y-1">
-                                <li>Azure Databricks</li>
-                                <li>Azure Data Factory</li>
-                                <li>Azure Data Lake Gen2</li>
-                                <li>Databricks Unity Catalog</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Programming Languages</h3>
-                            <ul class="list-disc list-inside text-gray-700 space-y-1">
-                                <li>SQL</li>
-                                <li>PySpark</li>
-                                <li>Scala</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Data Engineering</h3>
-                            <ul class="list-disc list-inside text-gray-700 space-y-1">
-                                <li>ETL/ELT Pipeline Development</li>
-                                <li>Data Warehousing</li>
-                                <li>Data Modelling</li>
-                                <li>Data Governance</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Performance Optimization</h3>
-                            <ul class="list-disc list-inside text-gray-700 space-y-1">
-                                <li>Storage Optimization</li>
-                                <li>Shuffle Optimization</li>
-                                <li>ETL Optimization</li>
-                                <li>Distributed Processing</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-semibold text-gray-800 mb-2">DevOps & Collaboration</h3>
-                            <ul class="list-disc list-inside text-gray-700 space-y-1">
-                                <li>CI/CD</li>
-                                <li>Agile Methodologies</li>
-                                <li>JIRA</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Business Intelligence</h3>
-                            <ul class="list-disc list-inside text-gray-700 space-y-1">
-                                <li>Microsoft Power BI</li>
-                                <li>Microsoft Excel</li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Experience Section -->
-                <section id="experience" class="card">
-                    <h2 class="section-heading">Experience</h2>
-
-                    <div class="experience-item">
-                        <h3 class="text-xl font-semibold text-gray-900">Associate Consultant</h3>
-                        <p class="text-indigo-600 font-medium">Capgemini</p>
-                        <p class="text-gray-600 text-sm">November 2023 - Present | Gurgaon, Haryana</p>
-                        <ul class="list-disc list-inside text-gray-700 mt-2 space-y-1">
-                            <li>Optimized data pipelines using SQL/PySpark, improving efficiency by 40%.</li>
-                            <li>Led Unity Catalog migration with 98% reduction in production issues.</li>
-                            <li>Orchestrated 100+ data sources through ADF, cutting processing time by 50%.</li>
-                            <li>Optimized 50+ TB data migration, reducing runtime by 62.5%.</li>
-                            <li>Managed DevOps workflows, increasing deployment efficiency by 30%.</li>
-                            <li>Delivered 10+ critical projects with 100% on-time completion and zero defects.</li>
-                        </ul>
-                    </div>
-
-                    <div class="experience-item mt-6">
-                        <h3 class="text-xl font-semibold text-gray-900">Senior Analyst</h3>
-                        <p class="text-indigo-600 font-medium">Capgemini</p>
-                        <p class="text-gray-600 text-sm">July 2022 - October 2023 | Bengaluru, Karnataka</p>
-                        <ul class="list-disc list-inside text-gray-700 mt-2 space-y-1">
-                            <li>Resolved 95% of production issues within SLA, reducing downtime by 40%.</li>
-                            <li>Created Power BI dashboards improving reporting efficiency by 45%.</li>
-                            <li>Automated ETL processes, reducing manual intervention by 40%.</li>
-                            <li>Implemented regression testing frameworks ensuring 99.9% system stability.</li>
-                            <li>Received performance awards for innovative data engineering solutions.</li>
-                        </ul>
-                    </div>
-
-                    <div class="experience-item mt-6">
-                        <h3 class="text-xl font-semibold text-gray-900">Data Engineering Intern</h3>
-                        <p class="text-indigo-600 font-medium">Capgemini</p>
-                        <p class="text-gray-600 text-sm">January 2022 - June 2022 | Bengaluru, Karnataka</p>
-                        <ul class="list-disc list-inside text-gray-700 mt-2 space-y-1">
-                            <li>Created simple data pipelines in Azure Data Factory for structured/semi-structured data.</li>
-                            <li>Participated in code reviews and testing to ensure high-quality deliverables.</li>
-                            <li>Collaborated on troubleshooting data quality issues across environments.</li>
-                        </ul>
-                    </div>
-                </section>
-
-                <!-- Education Section -->
-                <section id="education" class="card">
-                    <h2 class="section-heading">Education</h2>
-                    <div class="experience-item">
-                        <h3 class="text-xl font-semibold text-gray-900">Bachelor of Technology in Electronics and Communication</h3>
-                        <p class="text-indigo-600 font-medium">Vellore Institute of Technology</p>
-                        <p class="text-gray-600 text-sm">August 2018 - September 2022 | Bhopal, Madhya Pradesh</p>
-                    </div>
-                </section>
-
-                <!-- Key Achievements & Certifications Section -->
-                <section id="achievements-certifications" class="card">
-                    <h2 class="section-heading">Key Achievements & Certifications</h2>
-                    <div class="mb-6">
-                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Key Achievements</h3>
-                        <ul class="list-disc list-inside text-gray-700 space-y-1">
-                            <li><strong>Silver Star Award:</strong> Awarded Silver Star Award twice for exceptional contributions to data engineering projects and client satisfaction.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Certifications</h3>
-                        <ul class="list-disc list-inside text-gray-700 space-y-2">
-                            <li class="certification-item">
-                                <!-- Fabric Analytics Engineer Associate Badge -->
-                                <img src="fabric.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/32x32/6366f1/ffffff?text=Badge';" alt="Microsoft Certified Fabric Analytics Engineer Associate Badge" class="w-8 h-8 rounded-full border border-indigo-300">
-                                <a href="https://learn.microsoft.com/api/credentials/share/en-us/IreshAgrawal-1361/FBA4562DEE33025F?sharingId=4760308E24E54F0C" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">
-                                    Microsoft Certified: Fabric Analytics Engineer Associate
-                                </a>
-                            </li>
-                            <li class="certification-item">
-                                <!-- Azure Fundamentals Badge -->
-                                <img src="Fundamentals.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/32x32/6366f1/ffffff?text=Badge';" alt="Microsoft Certified Badge Azure Fundamentals" class="w-8 h-8 rounded-full border border-indigo-300">
-                                <a href="https://learn.microsoft.com/api/credentials/share/en-us/IreshAgrawal-1361/974F69021B0DA09D?sharingId=4760308E24E54F0C" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">
-                                    Microsoft Certified: Azure Fundamentals
-                                </a>
-                            </li>
-                            <li class="certification-item">
-                                <!-- Azure Data Engineer Associate Badge -->
-                                <img src="associate.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/32x32/6366f1/ffffff?text=Badge';" alt="Microsoft Certified Badge Azure Data Engineer Associate" class="w-8 h-8 rounded-full border border-indigo-300">
-                                <a href="https://learn.microsoft.com/api/credentials/share/en-us/IreshAgrawal-1361/E62B1E4E8EE38CF2?sharingId=4760308E24E54F0C" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">
-                                    Microsoft Certified: Azure Data Engineer Associate
-                                </a>
-                            </li>
-                            <!-- Databricks Certification -->
-                            <li class="certification-item">
-                                <img src="Generative-AI-fundamentals.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/32x32/6366f1/ffffff?text=Badge';" alt="Databricks Generative AI Fundamentals Badge" class="w-8 h-8 rounded-full border border-indigo-300">
-                                <a href="https://credentials.databricks.com/ecb9e6b1-d9f8-46a9-ac93-bb97d90b6895#acc.OzP3EoQ2" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">
-                                    Databricks: Generative AI Fundamentals
-                                </a>
-                            </li>
-                            <li class="certification-item">
-                                <!-- Capgemini Badge -->
-                                <img src="Capgemini.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/32x32/6366f1/ffffff?text=Badge';" alt="Capgemini Badge" class="w-8 h-8 rounded-full border border-indigo-300">
-                                Capgemini: Jr. Data Engineer (Level 1 and 2) and Data Engineer Level 1
-                            </li>
-                        </ul>
-                    </div>
                 </section>
             </div>
 
-            <!-- Cover Letter Content Section (initially hidden) -->
+            <!-- Cover Letter Content Section -->
             <div id="cover-letter-content" class="hidden">
                 <section id="cover-letter" class="card">
                     <h2 class="section-heading">Cover Letter</h2>
-                    <div class="text-gray-700 leading-relaxed space-y-4">
+                    <div class="leading-relaxed space-y-4 prose max-w-none mb-8">
                         <p>Dear Hiring Manager,</p>
-                        <p>
-                            I am writing to express my enthusiastic interest in the Data Engineer position at your esteemed organization. With nearly three years of hands-on experience leveraging Azure cloud technologies, Spark SQL, Delta Lake, and robust big data solutions, I am driven by a passion for architecting scalable, high-performance data systems. I am eager to bring this dedication and expertise to your team.
-                        </p>
-                        <p>
-                            During my tenure at Capgemini, I have had the privilege of leading critical data initiatives, including the design and optimization of intricate ETL pipelines using Azure Data Factory, Azure Data Lake Storage, and Azure Databricks. My strong proficiency in Scala, SQL, and Python has consistently enabled me to develop efficient solutions that have significantly enhanced data processing speeds and reliability. Furthermore, I possess a solid foundation in system integration, relational and dimensional modeling, and the full software development lifecycle (SDLC).
-                        </p>
+                        <p>I am writing to express my enthusiastic interest in the Data Engineer position at your esteemed organization. With nearly three years of hands-on experience leveraging Azure cloud technologies, Spark SQL, Delta Lake, and robust big data solutions, I am driven by a passion for architecting scalable, high-performance data systems. I am eager to bring this dedication and expertise to your team.</p>
+                        <p>During my tenure at Capgemini, I have had the privilege of leading critical data initiatives, including the design and optimization of intricate ETL pipelines using Azure Data Factory, Azure Data Lake Storage, and Azure Databricks. My strong proficiency in Scala, SQL, and Python has consistently enabled me to develop efficient solutions that have significantly enhanced data processing speeds and reliability. Furthermore, I possess a solid foundation in system integration, relational and dimensional modeling, and the full software development lifecycle (SDLC).</p>
                         <p>My recent accomplishments include:</p>
                         <ul class="list-disc list-inside space-y-1 ml-4">
                             <li>Improving pipeline efficiency by 40% through advanced SQL and PySpark optimization techniques.</li>
@@ -352,141 +411,306 @@
                             <li>Automating ETL processes, which effectively reduced manual intervention by 40%.</li>
                             <li>Enhancing reporting capabilities with impactful Power BI dashboards, boosting reporting efficiency by 45%.</li>
                         </ul>
-                        <p>
-                            Beyond my technical skills, I am Microsoft Certified: Azure Data Engineer Associate (DP-203), and also hold certifications in Azure Fundamentals and Databricks Generative AI. I approach every challenge with a solution-oriented mindset and a strong commitment to collaborative team efforts, always ensuring that data solutions directly contribute to achieving business objectives.
-                        </p>
-                        <p>
-                            I am confident that my skills, energy, and unwavering commitment to excellence align perfectly with your team's goals. Thank you for considering my application. I look forward to the opportunity to discuss how I can contribute to your organization's continued success in its data journey.
-                        </p>
-                        <p>Best regards,</p>
-                        <p>Iresh Agrawal</p>
+                        <p>Beyond my technical skills, I am Microsoft Certified: Azure Data Engineer Associate (DP-203), and also hold certifications in Azure Fundamentals and Databricks Generative AI. I approach every challenge with a problem-solving mindset and a strong commitment to collaborative team efforts, always ensuring that data solutions directly contribute to achieving business objectives.</p>
+                        <p>I am confident that my skills, energy, and unwavering commitment to excellence align perfectly with your team's goals. Thank you for considering my application. I look forward to the opportunity to discuss how I can contribute to your organization's continued success in its data journey.</p>
+                        <p>Best regards,<br>Iresh Agrawal</p>
                     </div>
-                    <!-- Download Cover Letter Button -->
-                    <a href="IreshAgrawal_CoverLetter.pdf" download="IreshAgrawal_CoverLetter.pdf" class="mt-4 inline-block px-4 py-2 bg-indigo-600 text-white font-semibold rounded-md hover:bg-indigo-700 transition-colors">
+                    <a href="IreshAgrawal_CoverLetter.pdf" download="IreshAgrawal_CoverLetter.pdf" class="primary-button inline-block">
                         Download Cover Letter
                     </a>
                 </section>
             </div>
 
-            <!-- Additional Details Content Section (initially hidden) -->
+            <!-- Resume Content Section -->
+            <div id="resume-content" class="hidden space-y-8">
+                <section id="summary" class="card">
+                    <h2 class="section-heading">Summary</h2>
+                    <div class="leading-relaxed mb-8">
+                        <p>
+                            Results-driven Data Engineer with 3+ years of expertise in cloud data engineering and ETL development.
+                            Proficient in Azure Data Factory, Databricks, SQL, PySpark for building scalable data pipelines using Medallion architecture.
+                            Demonstrated success in optimizing data workflows, reducing processing times by up to 62.5%, and implementing data
+                            governance frameworks. Collaborative team player experienced in translating business requirements into actionable data
+                            solutions while ensuring high performance and reliability.
+                        </p>
+                    </div>
+                    <a href="IreshAgrawal_resume.pdf" download="IreshAgrawal_resume.pdf" class="primary-button inline-block">
+                        Download Resume
+                    </a>
+                </section>
+
+                <section id="skills" class="card">
+                    <h2 class="section-heading">Core Competencies</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">Cloud Platforms</h3>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Azure Databricks</li>
+                                <li>Azure Data Factory</li>
+                                <li>Azure Data Lake Gen2</li>
+                                <li>Databricks Unity Catalog</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">Programming</h3>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>SQL</li>
+                                <li>PySpark</li>
+                                <li>Scala</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">Data Engineering</h3>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>ETL/ELT Pipeline Development</li>
+                                <li>Data Warehousing & Modelling</li>
+                                <li>Data Governance</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">Performance Tuning</h3>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Storage Optimization</li>
+                                <li>Shuffle Optimization</li>
+                                <li>Distributed Processing</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">DevOps & Collaboration</h3>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>CI/CD</li>
+                                <li>Agile Methodologies</li>
+                                <li>JIRA</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">Business Intelligence</h3>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Microsoft Power BI</li>
+                                <li>Microsoft Excel</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="experience" class="card">
+                    <h2 class="section-heading">Professional Experience</h2>
+                    <div class="experience-timeline">
+                        <div class="experience-item">
+                            <h3 class="text-xl font-semibold">Associate Consultant</h3>
+                            <p class="company">Capgemini</p>
+                            <p class="details">November 2023 - Present | Gurgaon, Haryana</p>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li>Optimized data pipelines using SQL/PySpark, improving efficiency by 40%.</li>
+                                <li>Led Unity Catalog migration with 98% reduction in production issues.</li>
+                                <li>Orchestrated 100+ data sources through ADF, cutting processing time by 50%.</li>
+                                <li>Optimized 50+ TB data migration, reducing runtime by 62.5%.</li>
+                                <li>Managed DevOps workflows, increasing deployment efficiency by 30%.</li>
+                                <li>Delivered 10+ critical projects with 100% on-time completion and zero defects.</li>
+                            </ul>
+                        </div>
+                        <div class="experience-item">
+                            <h3 class="text-xl font-semibold">Senior Analyst</h3>
+                            <p class="company">Capgemini</p>
+                            <p class="details">July 2022 - October 2023 | Bengaluru, Karnataka</p>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li>Resolved 95% of production issues within SLA, reducing downtime by 40%.</li>
+                                <li>Created Power BI dashboards improving reporting efficiency by 45%.</li>
+                                <li>Automated ETL processes, reducing manual intervention by 40%.</li>
+                                <li>Implemented regression testing frameworks ensuring 99.9% system stability.</li>
+                                <li>Received performance awards for innovative data engineering solutions.</li>
+                            </ul>
+                        </div>
+                        <div class="experience-item">
+                            <h3 class="text-xl font-semibold">Data Engineering Intern</h3>
+                            <p class="company">Capgemini</p>
+                            <p class="details">January 2022 - June 2022 | Bengaluru, Karnataka</p>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li>Created simple data pipelines in Azure Data Factory for structured/semi-structured data.</li>
+                                <li>Participated in code reviews and testing to ensure high-quality deliverables.</li>
+                                <li>Collaborated on troubleshooting data quality issues across environments.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="education" class="card">
+                    <h2 class="section-heading">Education</h2>
+                    <div class="experience-timeline">
+                        <div class="experience-item">
+                            <h3 class="text-xl font-semibold">Bachelor of Technology in Electronics and Communication</h3>
+                            <p class="company">Vellore Institute of Technology</p>
+                            <p class="details">July 2018 - June 2022 | Bhopal, Madhya Pradesh</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="achievements-certifications" class="card">
+                    <h2 class="section-heading">Achievements & Certifications</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-lg font-semibold mb-3">Key Achievements</h3>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li><strong>Silver Star Award:</strong> Awarded twice for exceptional contributions to data engineering projects and client satisfaction.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-3">Certifications</h3>
+                            <ul class="space-y-3">
+                                <li class="certification-item flex items-center gap-3">
+                                    <img src="fabric.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/36x36/6366f1/ffffff?text=F';" alt="Fabric Analytics Engineer Associate Badge">
+                                    <a href="https://learn.microsoft.com/api/credentials/share/en-us/IreshAgrawal-1361/FBA4562DEE33025F?sharingId=4760308E24E54F0C" target="_blank" rel="noopener noreferrer" class="primary-link font-medium">Fabric Analytics Engineer Associate</a>
+                                </li>
+                                 <li class="certification-item flex items-center gap-3">
+                                    <img src="associate.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/36x36/6366f1/ffffff?text=D';" alt="Azure Data Engineer Associate Badge">
+                                    <a href="https://learn.microsoft.com/api/credentials/share/en-us/IreshAgrawal-1361/E62B1E4E8EE38CF2?sharingId=4760308E24E54F0C" target="_blank" rel="noopener noreferrer" class="primary-link font-medium">Azure Data Engineer Associate</a>
+                                </li>
+                                <li class="certification-item flex items-center gap-3">
+                                    <img src="Fundamentals.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/36x36/6366f1/ffffff?text=A';" alt="Azure Fundamentals Badge">
+                                    <a href="https://learn.microsoft.com/api/credentials/share/en-us/IreshAgrawal-1361/974F69021B0DA09D?sharingId=4760308E24E54F0C" target="_blank" rel="noopener noreferrer" class="primary-link font-medium">Azure Fundamentals</a>
+                                </li>
+                                <li class="certification-item flex items-center gap-3">
+                                    <img src="Generative-AI-fundamentals.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/36x36/6366f1/ffffff?text=G';" alt="Databricks GenAI Fundamentals Badge">
+                                    <a href="https://credentials.databricks.com/ecb9e6b1-d9f8-46a9-ac93-bb97d90b6895#acc.OzP3EoQ2" target="_blank" rel="noopener noreferrer" class="primary-link font-medium">Databricks: Generative AI Fundamentals</a>
+                                </li>
+                                <li class="certification-item flex items-center gap-3">
+                                    <img src="Capgemini.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/36x36/6366f1/ffffff?text=C';" alt="Capgemini Badge">
+                                    <span class="font-medium">Capgemini: Jr. Data Engineer & Data Engineer Level 1</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Additional Details Content Section -->
             <div id="additional-details-content" class="hidden">
                 <section class="card">
-                    <h2 class="section-heading">Additional Details for Recruiters</h2>
-                    <div class="text-gray-700 leading-relaxed space-y-2">
-                        <p><strong class="font-semibold">Email ID:</strong> iresh.agrawal23@gmail.com</p>
-                        <p><strong class="font-semibold">Mobile No.:</strong> 8707481550</p>
-                        <p><strong class="font-semibold">Name:</strong> Iresh Agrawal</p>
-                        <p><strong class="font-semibold">Date of Birth:</strong> 23-02-2001</p>
-                        <p><strong class="font-semibold">Highest Qualification:</strong> B.Tech</p>
-                        <p><strong class="font-semibold">Preferred Job Location:</strong> Gurgaon/Noida/Hyderabad</p>
-                        <p><strong class="font-semibold">Current/Last Employer Name:</strong> Capgemini</p>
-                        <p><strong class="font-semibold">Skills:</strong> ETL, SQL, Azure DataBricks, DataBricks Unity Catalog, Azure Data Factory, Data Warehousing, Data Modelling, ADLS, Scala, Pyspark, Python, Microsoft Power BI</p>
-                        <p><strong class="font-semibold">Total Experience:</strong> 3 years</p>
-                        <p><strong class="font-semibold">Serving Notice Period:</strong> Yes (LWD: 4th July)</p>
-                        <p><strong class="font-semibold">Currently Holding Offer:</strong> TCS (11 LPA)</p>
-                        <p><strong class="font-semibold">Current CTC (LPA):</strong> 9.5</p>
-                        <p><strong class="font-semibold">Expected CTC (LPA):</strong> 15</p>
+                    <h2 class="section-heading">Additional Details</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                        <p><strong>Email ID:</strong> iresh.agrawal23@gmail.com</p>
+                        <p><strong>Mobile No.:</strong> 8707481550</p>
+                        <p><strong>Name:</strong> Iresh Agrawal</p>
+                        <p><strong>Date of Birth:</strong> 23-02-2001</p>
+                        <p><strong>Highest Qualification:</strong> B.Tech (ECE)</p>
+                        <p><strong>Preferred Job Location:</strong> Gurgaon/Noida/Hyderabad</p>
+                        <p><strong>Current/Last Employer:</strong> Capgemini</p>
+                        <p><strong>Serving Notice Period:</strong> Yes (LWD: 4th July)</p>
+                        <p><strong>Currently Holding Offer:</strong> <span class="font-bold text-green-500">11 LPA</span></p>
+                        <p><strong>Joining and Location:</strong> 14th July 2025 Gurgaon</p>
+                        <p><strong>Current CTC:</strong> 9.5 LPA</p>
+                        <p><strong>Expected CTC:</strong> 15 LPA <span class="italic opacity-70">(negotiable)</span></p>
+                        <div class="md:col-span-2">
+                             <p><strong>Skills:</strong> ETL, SQL, Azure DataBricks, Unity Catalog, Azure Data Factory, Data Warehousing, Data Modelling, ADLS, Scala, Pyspark, Python, Microsoft Power BI</p>
+                        </div>
                     </div>
                 </section>
             </div>
         </main>
 
         <!-- Global Connect Button -->
-        <div class="w-full max-w-5xl mt-8 flex justify-center">
-            <button onclick="showContactModal()" class="px-6 py-3 bg-indigo-600 text-white font-bold rounded-full hover:bg-indigo-700 transition-colors shadow-lg">
+        <div class="w-full mt-12 flex justify-center">
+            <button onclick="showContactModal()" class="primary-button text-lg">
                 Connect with me!
             </button>
         </div>
 
-        <footer class="w-full max-w-5xl mt-4 py-4 text-center text-gray-600 text-sm">
+        <footer class="w-full mt-12 py-4 text-center text-sm">
             <p>&copy; 2024 Iresh Agrawal. All rights reserved.</p>
         </footer>
     </div>
 
     <!-- Contact Modal -->
-    <div id="contactModal" class="contact-modal hidden">
-        <div class="contact-modal-content">
-            <span class="close-button" onclick="hideContactModal()">&times;</span>
-            <h3 class="text-2xl font-bold text-gray-900 mb-4">Connect with Iresh Agrawal</h3>
-            <!-- Formspree integration: action and method set here -->
+    <div id="contactModal" class="contact-modal hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="contact-modal-content w-full">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold">Connect with Me</h3>
+                <span class="close-button cursor-pointer" onclick="hideContactModal()"><i data-feather="x" class="w-7 h-7"></i></span>
+            </div>
             <form id="contactForm" action="https://formspree.io/f/mvgrzrzk" method="POST">
                 <div class="mb-4">
-                    <label for="contactName" class="block text-gray-700 text-sm font-bold mb-2">Your Name:</label>
-                    <!-- name attribute added for Formspree -->
-                    <input type="text" id="contactName" name="name" class="shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-indigo-500" required>
+                    <label for="contactName" class="block font-bold mb-2">Your Name:</label>
+                    <input type="text" id="contactName" name="name" required>
                 </div>
                 <div class="mb-4">
-                    <label for="contactEmail" class="block text-gray-700 text-sm font-bold mb-2">Your Email:</label>
-                    <!-- name attribute changed to 'email' for Formspree -->
-                    <input type="email" id="contactEmail" name="email" class="shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-indigo-500" required>
+                    <label for="contactEmail" class="block font-bold mb-2">Your Email:</label>
+                    <input type="email" id="contactEmail" name="email" required>
                 </div>
                 <div class="mb-6">
-                    <label for="contactMessage" class="block text-gray-700 text-sm font-bold mb-2">Message:</label>
-                    <!-- name attribute changed to 'message' for Formspree -->
-                    <textarea id="contactMessage" name="message" rows="5" class="shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-indigo-500" required></textarea>
+                    <label for="contactMessage" class="block font-bold mb-2">Message:</label>
+                    <textarea id="contactMessage" name="message" rows="5" required></textarea>
                 </div>
-                <div class="flex items-center justify-between">
-                    <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline transition-colors">
-                        Send Email
-                    </button>
-                    <button type="button" onclick="hideContactModal()" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline transition-colors">
-                        Cancel
-                    </button>
+                <div class="flex items-center justify-end gap-4">
+                    <button type="button" onclick="hideContactModal()" class="font-bold py-2 px-4 rounded-md transition-colors hover:bg-gray-100 dark:hover:bg-gray-700">Cancel</button>
+                    <button type="submit" class="primary-button">Send Email</button>
                 </div>
             </form>
         </div>
     </div>
 
     <script>
-        // Function to show/hide sections
+        // --- Feather Icons ---
+        feather.replace();
+
+        // --- Section Navigation ---
         function showSection(sectionId) {
-            const sections = document.querySelectorAll('#resume-content, #cover-letter-content, #additional-details-content');
-            sections.forEach(section => {
-                section.classList.add('hidden');
-            });
+            const sections = document.querySelectorAll('#welcome-content, #cover-letter-content, #resume-content, #additional-details-content');
+            sections.forEach(section => section.classList.add('hidden'));
             document.getElementById(sectionId).classList.remove('hidden');
 
-            // Update active navigation tab
-            document.getElementById('nav-resume').classList.remove('active');
-            document.getElementById('nav-cover-letter').classList.remove('active');
-            document.getElementById('nav-additional-details').classList.remove('active');
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => item.classList.remove('active'));
 
-            if (sectionId === 'resume-content') {
-                document.getElementById('nav-resume').classList.add('active');
-            } else if (sectionId === 'cover-letter-content') {
-                document.getElementById('nav-cover-letter').classList.add('active');
-            } else if (sectionId === 'additional-details-content') {
-                document.getElementById('nav-additional-details').classList.add('active');
-            }
+            const activeNavId = 'nav-' + sectionId.split('-')[0];
+            document.getElementById(activeNavId)?.classList.add('active');
         }
 
-        // Initialize with resume section shown
-        document.addEventListener('DOMContentLoaded', () => {
-            showSection('resume-content');
-        });
-
-        // Get the modal element
+        // --- Modal Logic ---
         const contactModal = document.getElementById('contactModal');
-
-        // Function to show the contact modal
         function showContactModal() {
             contactModal.classList.remove('hidden');
-            contactModal.style.display = 'flex'; // Ensure flexbox is used for centering
         }
-
-        // Function to hide the contact modal
         function hideContactModal() {
             contactModal.classList.add('hidden');
-            contactModal.style.display = 'none';
         }
-
-        // Close the modal if clicked outside
-        //Iresh Agrawal Portfolio
-        window.onclick = function(event) {
+        window.onclick = (event) => {
             if (event.target == contactModal) {
                 hideContactModal();
             }
         }
+        
+        // --- Theme Toggle ---
+        const themeToggle = document.getElementById('themeToggle');
+        const lightIcon = themeToggle.querySelector('.light-icon');
+        const darkIcon = themeToggle.querySelector('.dark-icon');
+
+        function updateThemeUI(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            if (theme === 'dark') {
+                lightIcon.classList.add('hidden');
+                darkIcon.classList.remove('hidden');
+            } else {
+                lightIcon.classList.remove('hidden');
+                darkIcon.classList.add('hidden');
+            }
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            localStorage.setItem('theme', newTheme);
+            updateThemeUI(newTheme);
+        });
+        
+        // --- Initial Load ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load saved theme or default to light
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            updateThemeUI(savedTheme);
+
+            // Show default section
+            showSection('welcome-content');
+        });
     </script>
 </body>
 </html>
