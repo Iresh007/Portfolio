@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iresh Agrawal | Data Engineer Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Feather Icons for a cleaner look -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <style>
+        /* ==========================================
+        Enhanced Portfolio Styles
+        ==========================================
+        */
+
+        :root {
+            /* Color Palette - Light Mode */
+            --bg-light: #F9FAFB; /* Off-white background */
+            --card-bg-light: #FFFFFF;
+            --text-primary-light: #111827;
+            --text-secondary-light: #4B5563;
+            --accent-light: #4F46E5; /* indigo-600 */
+            --accent-hover-light: #4338CA;
+            --border-light: #E5E7EB;
+            --shadow-color-light: 220, 224, 230;
+
+            /* Color Palette - Dark Mode */
+            --bg-dark: #0D1117;
+            --card-bg-dark: #161B22;
+            --text-primary-dark: #E5E7EB;
+            --text-secondary-dark: #9CA3AF;
+            --accent-dark: #6366F1; /* indigo-500 */
+            --accent-hover-dark: #818CF8;
+            --border-dark: #30363D;
+            --shadow-color-dark: 0, 0, 0;
+        }
+
+        html[data-theme='light'] {
+            --bg-color: var(--bg-light);
+            --card-bg-color: var(--card-bg-light);
+            --text-primary: var(--text-primary-light);
+            --text-secondary: var(--text-secondary-light);
+            --accent-color: var(--accent-light);
+            --accent-hover: var(--accent-hover-light);
+            --border-color: var(--border-light);
+            --shadow-rgb: var(--shadow-color-light);
+        }
+
+        html[data-theme='dark'] {
+            --bg-color: var(--bg-dark);
+            --card-bg-color: var(--card-bg-dark);
+            --text-primary: var(--text-primary-dark);
+            --text-secondary: var(--text-secondary-dark);
+            --accent-color: var(--accent-dark);
+            --accent-hover: var(--accent-hover-dark);
+            --border-color: var(--border-dark);
+            --shadow-rgb: var(--shadow-color-dark);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-secondary);
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        /* Global container */
+        .page-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Card Styling */
+        .card {
+            background-color: var(--card-bg-color);
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(var(--shadow-rgb), 0.07), 0 2px 4px -2px rgba(var(--shadow-rgb), 0.07);
+            transition: all 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(var(--shadow-rgb), 0.1), 0 4px 6px -4px rgba(var(--shadow-rgb), 0.1);
+        }
+
+        /* Header Styles */
+        .header-card {
+            padding: 2rem;
+        }
+        
+        #profile-image {
+             border: 4px solid var(--accent-color);
+             transition: border-color 0.4s ease;
+        }
+
+        /* Section Heading */
+        .section-heading {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .section-heading::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 80%;
+            width: 5px;
+            background-color: var(--accent-color);
+            border-radius: 4px;
+            transition: background-color 0.4s ease;
+        }
+
+        /* Navigation Tabs */
+        .nav-container {
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .nav-item {
+            cursor: pointer;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover {
+            background-color: rgba(var(--shadow-rgb), 0.05);
+            color: var(--text-primary);
+        }
+
+        .nav-item.active {
+            background-color: var(--accent-color);
+            color: white;
+            font-weight: 600;
+        }
+        
+        html[data-theme='dark'] .nav-item.active {
+            color: var(--text-primary);
+            background-color: var(--accent-hover);
+        }
+        
+        /* Links & Buttons */
+        .primary-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+        .primary-link:hover {
+            color: var(--accent-color);
+        }
+
+        .primary-button {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--accent-color);
+            color: white;
+            font-weight: 600;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(var(--shadow-rgb), 0.1), 0 2px 4px -2px rgba(var(--shadow-rgb), 0.06);
+            border: 1px solid transparent;
+            display: inline-block;
+        }
+        
+        html[data-theme='dark'] .primary-button {
+             color: var(--text-primary-dark);
+        }
+
+        .primary-button:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 7px 10px -3px rgba(var(--shadow-rgb), 0.15), 0 4px 6px -4px rgba(var(--shadow-rgb), 0.1);
+        }
+
+        /* Experience Timeline */
+        .experience-timeline {
+            position: relative;
+            padding-left: 3rem;
+            border-left: 3px solid var(--border-color);
+            transition: border-color 0.4s ease;
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+        
+        .experience-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: calc(-3rem - 7px + 1.5px);
+            top: 7px;
+            width: 14px;
+            height: 14px;
+            background-color: var(--bg-color);
+            border: 3px solid var(--accent-color);
+            border-radius: 50%;
+            z-index: 1;
+            transition: all 0.4s ease;
+        }
+        
+        .experience-item h3 { color: var(--text-primary); }
+        .experience-item .company { color: var(--accent-color); font-weight: 500; }
+        .experience-item .details { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem; }
+        
+        /* Certification List */
+        .certification-item img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            background-color: var(--card-bg-light);
+            padding: 4px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+            flex-shrink: 0;
+        }
+        html[data-theme='dark'] .certification-item img {
+             background-color: #fff;
+        }
+
+        /* Skills Section */
+        #skills .grid > div {
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
+        #skills .grid > div:hover {
+            border-color: var(--accent-color);
+            transform: scale(1.03);
+        }
+
+        /* Theme Toggle */
+        #themeToggle {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(var(--shadow-rgb), 0.05);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        #themeToggle:hover {
+            color: var(--text-primary);
+            border-color: var(--accent-color);
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        /* Modal */
+        #contactModal {
+            background-color: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        .contact-modal-content {
+            background-color: var(--card-bg-color);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 25px 50px -12px rgba(var(--shadow-rgb), 0.25);
+            animation: fadeIn 0.3s ease-out;
+            max-width: 550px;
+        }
+        .contact-modal-content input, .contact-modal-content textarea {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            width: 100%;
+        }
+        .contact-modal-content input:focus, .contact-modal-content textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+        }
+        html[data-theme='dark'] .contact-modal-content input:focus,
+        html[data-theme='dark'] .contact-modal-content textarea:focus {
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+        }
+        .close-button {
+            color: var(--text-secondary);
+        }
+        .close-button:hover {
+            color: var(--text-primary);
+        }
+
+        .hidden { display: none; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="page-container min-h-screen flex flex-col py-8 px-4 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <header class="w-full card header-card mb-8 text-center relative">
+            <div class="flex flex-col sm:flex-row items-center justify-between sm:pr-16">
+                 <div class="flex flex-col sm:flex-row items-center text-center sm:text-left">
+                    <a href="Pi7_Passport_Photo.jpeg" download="Iresh_Agrawal_Passport_Photo.jpeg">
+                        <img src="Pi7_Passport_Photo.jpeg"
+                             onerror="this.onerror=null;this.src='https://placehold.co/128x128/E0E7FF/4F46E5?text=Iresh';"
+                             alt="Iresh Agrawal Passport Photo"
+                             id="profile-image"
+                             class="w-32 h-32 rounded-full object-cover mb-4 sm:mb-0 sm:mr-6 shadow-lg">
+                    </a>
+                    <div>
+                        <h1 class="text-4xl sm:text-5xl font-extrabold mb-1">Iresh Agrawal</h1>
+                        <p class="text-xl sm:text-2xl font-semibold mb-4" style="color: var(--accent-color);">Data Engineer</p>
+                    </div>
+                </div>
+                 <div class="flex flex-col items-center sm:items-end gap-2 text-sm sm:text-base mt-4 sm:mt-0">
+                    <a href="tel:+918707481550" class="primary-link">
+                        <i data-feather="phone"></i><span>8707481550</span>
+                    </a>
+                    <a href="mailto:iresh.agrawal23@gmail.com" class="primary-link">
+                       <i data-feather="mail"></i> <span>iresh.agrawal23@gmail.com</span>
+                    </a>
+                    <a href="https://linkedin.com/in/iresh-agrawal23" target="_blank" rel="noopener noreferrer" class="primary-link">
+                        <i data-feather="linkedin"></i><span>LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+           
+            <nav class="nav-container flex justify-center flex-wrap gap-2">
+                <span id="nav-welcome" class="nav-item" onclick="showSection('welcome-content')">Welcome</span>
+                <span id="nav-cover-letter" class="nav-item" onclick="showSection('cover-letter-content')">Cover Letter</span>
+                <span id="nav-resume" class="nav-item active" onclick="showSection('resume-content')">Resume</span>
+                <span id="nav-additional-details" class="nav-item" onclick="showSection('additional-details-content')">Additional Details</span>
+            </nav>
+            <button id="themeToggle" title="Toggle Theme">
+                <i data-feather="sun" class="light-icon"></i>
+                <i data-feather="moon" class="dark-icon hidden"></i>
+            </button>
+        </header>
+
+        <main class="w-full flex-grow space-y-8">
+            <!-- Welcome -->
+            <div id="welcome-content" class="hidden">
+                <section class="card text-center py-10">
+                    <h2 class="text-4xl font-extrabold mb-6">Welcome to My Professional Profile!</h2>
+                    <img src="Pi7_Passport_Photo.jpeg"
+                         onerror="this.onerror=null;this.src='https://placehold.co/200x200/E0E7FF/4F46E5?text=Iresh';"
+                         alt="Iresh Agrawal Large Photo"
+                         class="w-48 h-48 rounded-full object-cover mx-auto mb-6 border-4 shadow-xl"
+                         style="border-color: var(--accent-color);">
+                    <p class="text-xl leading-relaxed max-w-3xl mx-auto">
+                        Hello! I'm Iresh Agrawal, a dedicated Data Engineer with 3.5+ years of experience.
+                        Specializing in Snowflake, Azure, and Data Vault architectures, I build scalable solutions that drive business value.
+                        Explore my profile to learn more about my skills, experience, and achievements.
+                    </p>
+                </section>
+            </div>
+
+            <!-- Cover Letter -->
+            <div id="cover-letter-content" class="hidden">
+                <section id="cover-letter" class="card">
+                    <h2 class="section-heading">Cover Letter</h2>
+                    <div class="leading-relaxed space-y-4 prose max-w-none mb-8">
+                        <p>Dear Hiring Manager,</p>
+                        <p>I am writing to express my enthusiastic interest in the Data Engineer position at your organization. With over 3.5 years of hands-on experience, I have evolved from building foundational data pipelines to architecting complex Data Vault solutions and orchestrating CI/CD workflows across both Azure and Snowflake ecosystems. I am driven by a passion for building scalable, high-performance systems that directly support critical business analytics.</p>
+                        <p>In my current role as a <strong>Software Engineer - Senior Executive at EXL Service</strong>, I support a global insurance leader (AIG) by designing sophisticated Data Vault 2.0 architectures. My work involves developing Clean, Raw, and Business Vault layers using Hubs, Links, and Satellites to ensure auditable historical tracking. Beyond data modeling, I have taken ownership of the DevOps lifecycle, using Jenkins and GitHub to manage XML-based database change logs and automate schema deployments across development, QA, and production environments.</p>
+                        <p>Previously, during my tenure at <strong>Capgemini</strong>, I led critical data initiatives for a global retail giant (Unilever). My focus was on high-volume optimization and platform migration using Azure Databricks and PySpark. I successfully led a Unity Catalog migration that resulted in a 98% reduction in production issues and optimized data migration processes to reduce runtime by 62.5%.</p>
+                        <p>My core technical competencies and achievements include:</p>
+                        <ul class="list-disc list-inside space-y-1 ml-4">
+                            <li><strong>Cloud & Architecture:</strong> Mastery of Snowflake (Data Vault 2.0) and Azure Databricks (Medallion Architecture).</li>
+                            <li><strong>DevOps Orchestration:</strong> Managing CI/CD pipelines via Jenkins and version control via GitHub to streamline multi-project releases.</li>
+                            <li><strong>Performance Engineering:</strong> Improving pipeline efficiency by 40% through advanced SQL and PySpark optimization.</li>
+                            <li><strong>Reliability:</strong> Reducing manual intervention by 40% through rigorous ETL automation.</li>
+                        </ul>
+                        <p>In addition to my experience, I am Microsoft Certified: Azure Data Engineer Associate (DP-203) and hold certifications in Databricks Generative AI. I approach every challenge with a solution-oriented mindset, ensuring that technical execution always aligns with business goals.</p>
+                        <p>I am confident that my blend of modern data architecture, cloud expertise, and DevOps maturity aligns perfectly with your team's goals. Thank you for considering my application. I look forward to the opportunity to discuss how I can contribute to your organization's continued success in its data journey.</p>
+                        <p>Sincerely,<br>Iresh Agrawal</p>
+                    </div>
+                    <a href="IreshAgrawal_CoverLetter.pdf" download="IreshAgrawal_CoverLetter.pdf" class="primary-button">
+                        Download Cover Letter
+                    </a>
+                </section>
+            </div>
+
+            <!-- Resume Content -->
+            <div id="resume-content" class="hidden space-y-8">
+                <section id="summary" class="card">
+                    <h2 class="section-heading">Summary</h2>
+                    <div class="leading-relaxed mb-8">
+                        <p>
+                            Results-driven Data Engineer with <strong>3.5+ years</strong> of experience designing scalable data solutions across <strong>Azure Databricks</strong> and <strong>Snowflake</strong> platforms. 
+                            Expert in complex data modelling, proficient in both <strong>Medallion</strong> and <strong>Data Vault 2.0</strong> architectures for global Retail and Insurance clients. 
+                            Skilled in PySpark, SQL, and Shell scripting, with deep expertise in CI/CD orchestration (Jenkins) and database change management. 
+                            Proven track record of optimizing pipeline performance by 62.5% and ensuring 100% SLA compliance through rigorous automation and testing.
+                        </p>
+                    </div>
+                    <a href="IreshAgrawal_resume.pdf" download="IreshAgrawal_resume.pdf" class="primary-button">
+                        Download Resume
+                    </a>
+                </section>
+
+                <section id="skills" class="card">
+                    <h2 class="section-heading">Technical Skills</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">Cloud & DW</h3>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Snowflake</li>
+                                <li>Azure Databricks</li>
+                                <li>Azure Data Factory (ADF)</li>
+                                <li>AWS S3 & ADLS Gen2</li>
+                                <li>Unity Catalog</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">Languages</h3>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>SQL (Advanced)</li>
+                                <li>PySpark & Scala</li>
+                                <li>Shell Scripting</li>
+                                <li>Python & XML</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">Data Architecture</h3>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Data Vault 2.0 (Hubs/Links/Sats)</li>
+                                <li>Medallion Architecture</li>
+                                <li>ETL/ELT Design</li>
+                                <li>Star Schema</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">DevOps & Tools</h3>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Jenkins & GitHub/Git</li>
+                                <li>Azure DevOps CI/CD</li>
+                                <li>JIRA & Rally</li>
+                                <li>DBVisualizer & Putty</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">Optimization</h3>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Storage & Shuffle Tuning</li>
+                                <li>Upsert Strategies</li>
+                                <li>Distributed Processing</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">Visualization</h3>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Microsoft Power BI</li>
+                                <li>Microsoft Excel</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="experience" class="card">
+                    <h2 class="section-heading">Professional Experience</h2>
+                    <div class="experience-timeline">
+                        <!-- EXL -->
+                        <div class="experience-item">
+                            <h3 class="text-xl font-semibold">Software Engineer - Senior Executive</h3>
+                            <p class="company">EXL Services</p>
+                            <p class="details">July 2025 - Present | Gurgaon, Haryana</p>
+                            <p class="text-sm text-gray-500 italic mb-2">Client: Global Insurance Leader (AIG)</p>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li><strong>Data Vault Engineering:</strong> Developed scalable Data Vault 2.0 models (Clean, Raw, & Business Vault) utilizing Hubs, Links, and Satellites.</li>
+                                <li><strong>CI/CD Orchestration:</strong> Orchestrated database schema evolution via Jenkins and GitHub using XML-based Master Change Logs.</li>
+                                <li><strong>Pipeline Automation:</strong> Executed automated Shell-based data loads via SSH into Snowflake (AWS S3 backend).</li>
+                                <li><strong>Release Management:</strong> Streamlined multi-project deployments (e.g., GOALD, IFED) by configuring Jenkins build parameters.</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Capgemini Role 1 -->
+                        <div class="experience-item">
+                            <h3 class="text-xl font-semibold">Associate Consultant</h3>
+                            <p class="company">Capgemini</p>
+                            <p class="details">November 2023 - July 2025 | Gurgaon, Haryana</p>
+                            <p class="text-sm text-gray-500 italic mb-2">Client: Global FMCG/Retail Giant (Unilever)</p>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li><strong>Migration:</strong> Led Unity Catalog implementation and a 50TB+ data migration, reducing runtime by 62.5% and production issues by 98%.</li>
+                                <li><strong>Optimization:</strong> Optimized SQL/PySpark pipelines and orchestrated 100+ ADF data sources, cutting processing time by 50%.</li>
+                                <li><strong>DevOps:</strong> Managed DevOps workflows and delivered 10+ critical projects with 100% on-time completion.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Capgemini Role 2 -->
+                        <div class="experience-item">
+                            <h3 class="text-xl font-semibold">Senior Analyst</h3>
+                            <p class="company">Capgemini</p>
+                            <p class="details">July 2022 - October 2023 | Bengaluru, Karnataka</p>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li><strong>Support:</strong> Resolved 95% of production issues within SLA and ensured 99.9% system stability.</li>
+                                <li><strong>Automation:</strong> Automated ETL processes and developed Power BI dashboards, reducing manual intervention by 40%.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Capgemini Intern -->
+                        <div class="experience-item">
+                            <h3 class="text-xl font-semibold">Data Engineering Intern</h3>
+                            <p class="company">Capgemini</p>
+                            <p class="details">January 2022 - June 2022 | Bengaluru, Karnataka</p>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li>Created Azure Data Factory pipelines for structured/semi-structured data and collaborated on code reviews.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="education" class="card">
+                    <h2 class="section-heading">Education</h2>
+                    <div class="experience-timeline">
+                        <div class="experience-item">
+                            <h3 class="text-xl font-semibold">Bachelor of Technology in Electronics and Communication</h3>
+                            <p class="company">Vellore Institute of Technology</p>
+                            <p class="details">Aug 2018 - Sept 2022 | Bhopal, Madhya Pradesh</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="achievements-certifications" class="card">
+                    <h2 class="section-heading">Achievements & Certifications</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-lg font-semibold mb-3">Key Achievements</h3>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li><strong>Exceeding Award (EXL):</strong> For exceptional contributions to data engineering projects and client satisfaction.</li>
+                                <li><strong>Silver Star Award (Capgemini):</strong> Awarded twice for exceptional contributions.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-3">Certifications</h3>
+                            <ul class="space-y-3">
+                                 <li class="certification-item flex items-center gap-3">
+                                    <img src="associate.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/36x36/6366f1/ffffff?text=D';" alt="Azure Data Engineer Associate Badge">
+                                    <a href="#" class="primary-link font-medium">Azure Data Engineer Associate (DP-203)</a>
+                                </li>
+                                <li class="certification-item flex items-center gap-3">
+                                    <img src="fabric.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/36x36/6366f1/ffffff?text=F';" alt="Fabric Analytics Engineer Associate Badge">
+                                    <a href="#" class="primary-link font-medium">Fabric Analytics Engineer Associate</a>
+                                </li>
+                                <li class="certification-item flex items-center gap-3">
+                                    <img src="Fundamentals.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/36x36/6366f1/ffffff?text=A';" alt="Azure Fundamentals Badge">
+                                    <a href="#" class="primary-link font-medium">Azure Fundamentals</a>
+                                </li>
+                                <li class="certification-item flex items-center gap-3">
+                                    <img src="Generative-AI-fundamentals.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/36x36/6366f1/ffffff?text=G';" alt="Databricks GenAI Fundamentals Badge">
+                                    <a href="#" class="primary-link font-medium">Databricks: GenAI Fundamentals</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Additional Details -->
+            <div id="additional-details-content" class="hidden">
+                <section class="card">
+                    <h2 class="section-heading">Additional Details</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                        <p><strong>Email ID:</strong> iresh.agrawal23@gmail.com</p>
+                        <p><strong>Mobile No.:</strong> +91 8707481550</p>
+                        <p><strong>Name:</strong> Iresh Agrawal</p>
+                        <p><strong>Date of Birth:</strong> 23-02-2001</p>
+                        <p><strong>Highest Qualification:</strong> B.Tech (ECE)</p>
+                        <p><strong>Preferred Locations:</strong> Gurgaon/Noida/Hyderabad</p>
+                        <p><strong>Current Employer:</strong> EXL Services</p>
+                        <p><strong>Total Experience:</strong> 3.5+ Years</p>
+                        <div class="md:col-span-2 mt-4">
+                             <p class="mb-2 font-bold">Skill Summary:</p>
+                             <p class="leading-relaxed">Data Vault 2.0, Snowflake, Azure Databricks, Medallion Architecture, Jenkins, CI/CD, Shell Scripting, Python, SQL, XML, Power BI.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Global Connect Button -->
+        <div class="w-full mt-12 flex justify-center">
+            <button onclick="showContactModal()" class="primary-button text-lg">
+                Connect with me!
+            </button>
+        </div>
+
+        <footer class="w-full mt-12 py-4 text-center text-sm">
+            <p>&copy; 2025 Iresh Agrawal. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="contact-modal hidden fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="contact-modal-content w-full">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold">Connect with Me</h3>
+                <span class="close-button cursor-pointer" onclick="hideContactModal()"><i data-feather="x" class="w-7 h-7"></i></span>
+            </div>
+            <form id="contactForm" action="https://formspree.io/f/mvgrzrzk" method="POST">
+                <div class="mb-4">
+                    <label for="contactName" class="block font-bold mb-2">Your Name:</label>
+                    <input type="text" id="contactName" name="name" required>
+                </div>
+                <div class="mb-4">
+                    <label for="contactEmail" class="block font-bold mb-2">Your Email:</label>
+                    <input type="email" id="contactEmail" name="email" required>
+                </div>
+                <div class="mb-6">
+                    <label for="contactMessage" class="block font-bold mb-2">Message:</label>
+                    <textarea id="contactMessage" name="message" rows="5" required></textarea>
+                </div>
+                <div class="flex items-center justify-end gap-4">
+                    <button type="button" onclick="hideContactModal()" class="font-bold py-2 px-4 rounded-md transition-colors hover:bg-gray-100 dark:hover:bg-gray-700">Cancel</button>
+                    <button type="submit" class="primary-button">Send Email</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // --- Feather Icons ---
+        feather.replace();
+
+        // --- Section Navigation ---
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('#welcome-content, #cover-letter-content, #resume-content, #additional-details-content');
+            sections.forEach(section => section.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => item.classList.remove('active'));
+
+            const activeNavId = 'nav-' + sectionId.split('-')[0];
+            document.getElementById(activeNavId)?.classList.add('active');
+        }
+
+        // --- Modal Logic ---
+        const contactModal = document.getElementById('contactModal');
+        function showContactModal() {
+            contactModal.classList.remove('hidden');
+        }
+        function hideContactModal() {
+            contactModal.classList.add('hidden');
+        }
+        window.onclick = (event) => {
+            if (event.target == contactModal) {
+                hideContactModal();
+            }
+        }
+        
+        // --- Theme Toggle ---
+        const themeToggle = document.getElementById('themeToggle');
+        const lightIcon = themeToggle.querySelector('.light-icon');
+        const darkIcon = themeToggle.querySelector('.dark-icon');
+
+        function updateThemeUI(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            if (theme === 'dark') {
+                lightIcon.classList.add('hidden');
+                darkIcon.classList.remove('hidden');
+            } else {
+                lightIcon.classList.remove('hidden');
+                darkIcon.classList.add('hidden');
+            }
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            localStorage.setItem('theme', newTheme);
+            updateThemeUI(newTheme);
+        });
+        
+        // --- Initial Load ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            updateThemeUI(savedTheme);
+            showSection('welcome-content');
+        });
+    </script>
+</body>
+</html>
