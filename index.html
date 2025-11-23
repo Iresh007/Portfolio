@@ -16,29 +16,28 @@
     <style>
         /* ==========================================
         Enhanced Portfolio Styles
-        Inspired by modern, clean web design.
         ==========================================
         */
 
         :root {
             /* Color Palette - Light Mode */
-            --bg-light: #F9FAFB; /* Off-white background (Tailwind gray-50) */
+            --bg-light: #F9FAFB; /* Off-white background */
             --card-bg-light: #FFFFFF;
-            --text-primary-light: #111827; /* gray-900 */
-            --text-secondary-light: #4B5563; /* gray-600 */
+            --text-primary-light: #111827;
+            --text-secondary-light: #4B5563;
             --accent-light: #4F46E5; /* indigo-600 */
-            --accent-hover-light: #4338CA; /* indigo-700 */
-            --border-light: #E5E7EB; /* gray-200 */
+            --accent-hover-light: #4338CA;
+            --border-light: #E5E7EB;
             --shadow-color-light: 220, 224, 230;
 
             /* Color Palette - Dark Mode */
-            --bg-dark: #0D1117; /* Very dark blue-gray, like GitHub */
-            --card-bg-dark: #161B22; /* Slightly lighter than bg */
-            --text-primary-dark: #E5E7EB; /* gray-200 */
-            --text-secondary-dark: #9CA3AF; /* gray-400 */
+            --bg-dark: #0D1117;
+            --card-bg-dark: #161B22;
+            --text-primary-dark: #E5E7EB;
+            --text-secondary-dark: #9CA3AF;
             --accent-dark: #6366F1; /* indigo-500 */
-            --accent-hover-dark: #818CF8; /* indigo-400 */
-            --border-dark: #30363D; /* Darker border */
+            --accent-hover-dark: #818CF8;
+            --border-dark: #30363D;
             --shadow-color-dark: 0, 0, 0;
         }
 
@@ -76,7 +75,7 @@
             font-weight: 700;
         }
 
-        /* Global container and layout */
+        /* Global container */
         .page-container {
             max-width: 1100px;
             margin: 0 auto;
@@ -85,7 +84,7 @@
         /* Card Styling */
         .card {
             background-color: var(--card-bg-color);
-            border-radius: 1rem; /* Softer, larger radius (rounded-2xl) */
+            border-radius: 1rem;
             padding: 2rem;
             border: 1px solid var(--border-color);
             box-shadow: 0 4px 6px -1px rgba(var(--shadow-rgb), 0.07), 0 2px 4px -2px rgba(var(--shadow-rgb), 0.07);
@@ -162,10 +161,6 @@
             background-color: var(--accent-hover);
         }
         
-        html[data-theme='dark'] h1, html[data-theme='dark'] h2, html[data-theme='dark'] h3 {
-             color: var(--text-primary-dark);
-        }
-        
         /* Links & Buttons */
         .primary-link {
             display: inline-flex;
@@ -187,6 +182,7 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px -1px rgba(var(--shadow-rgb), 0.1), 0 2px 4px -2px rgba(var(--shadow-rgb), 0.06);
             border: 1px solid transparent;
+            display: inline-block;
         }
         
         html[data-theme='dark'] .primary-button {
@@ -202,7 +198,7 @@
         /* Experience Timeline */
         .experience-timeline {
             position: relative;
-            padding-left: 3rem; /* Increased padding to create space */
+            padding-left: 3rem;
             border-left: 3px solid var(--border-color);
             transition: border-color 0.4s ease;
         }
@@ -219,9 +215,8 @@
         .experience-item::before {
             content: '';
             position: absolute;
-            /* Recalculated 'left' to align with the new padding */
             left: calc(-3rem - 7px + 1.5px);
-            top: 7px; /* Adjusted for better vertical alignment with the title */
+            top: 7px;
             width: 14px;
             height: 14px;
             background-color: var(--bg-color);
@@ -233,14 +228,14 @@
         
         .experience-item h3 { color: var(--text-primary); }
         .experience-item .company { color: var(--accent-color); font-weight: 500; }
-        .experience-item .details { color: var(--text-secondary); font-size: 0.9rem; }
+        .experience-item .details { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem; }
         
         /* Certification List */
         .certification-item img {
             width: 36px;
             height: 36px;
             object-fit: contain;
-            background-color: var(--card-bg-light); /* Keep light bg for visibility */
+            background-color: var(--card-bg-light);
             padding: 4px;
             border-radius: 50%;
             border: 1px solid var(--border-color);
@@ -262,7 +257,7 @@
             transform: scale(1.03);
         }
 
-        /* Theme Toggle Button */
+        /* Theme Toggle */
         #themeToggle {
             position: absolute;
             top: 1.5rem;
@@ -286,7 +281,7 @@
 
         /* Modal */
         #contactModal {
-            background-color: rgba(17, 24, 39, 0.6); /* gray-900 with opacity */
+            background-color: rgba(17, 24, 39, 0.6);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
         }
@@ -305,12 +300,12 @@
             color: var(--text-primary);
             border-radius: 0.5rem;
             padding: 0.75rem;
-            width: 100%; /* Ensure inputs take full width */
+            width: 100%;
         }
         .contact-modal-content input:focus, .contact-modal-content textarea:focus {
             outline: none;
             border-color: var(--accent-color);
-            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2); /* Use static color for simplicity */
+            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
         }
         html[data-theme='dark'] .contact-modal-content input:focus,
         html[data-theme='dark'] .contact-modal-content textarea:focus {
@@ -323,7 +318,6 @@
             color: var(--text-primary);
         }
 
-        /* Helper classes */
         .hidden { display: none; }
         
         @keyframes fadeIn {
@@ -334,10 +328,10 @@
 </head>
 <body class="antialiased">
     <div class="page-container min-h-screen flex flex-col py-8 px-4 sm:px-6 lg:px-8">
+        <!-- Header -->
         <header class="w-full card header-card mb-8 text-center relative">
             <div class="flex flex-col sm:flex-row items-center justify-between sm:pr-16">
                  <div class="flex flex-col sm:flex-row items-center text-center sm:text-left">
-                     <!-- Main profile photo -->
                     <a href="Pi7_Passport_Photo.jpeg" download="Iresh_Agrawal_Passport_Photo.jpeg">
                         <img src="Pi7_Passport_Photo.jpeg"
                              onerror="this.onerror=null;this.src='https://placehold.co/128x128/E0E7FF/4F46E5?text=Iresh';"
@@ -363,14 +357,12 @@
                 </div>
             </div>
            
-            <!-- Navigation Tabs -->
             <nav class="nav-container flex justify-center flex-wrap gap-2">
                 <span id="nav-welcome" class="nav-item" onclick="showSection('welcome-content')">Welcome</span>
                 <span id="nav-cover-letter" class="nav-item" onclick="showSection('cover-letter-content')">Cover Letter</span>
                 <span id="nav-resume" class="nav-item active" onclick="showSection('resume-content')">Resume</span>
                 <span id="nav-additional-details" class="nav-item" onclick="showSection('additional-details-content')">Additional Details</span>
             </nav>
-            <!-- Theme Toggle Button -->
             <button id="themeToggle" title="Toggle Theme">
                 <i data-feather="sun" class="light-icon"></i>
                 <i data-feather="moon" class="dark-icon hidden"></i>
@@ -378,7 +370,7 @@
         </header>
 
         <main class="w-full flex-grow space-y-8">
-            <!-- Welcome Content Section -->
+            <!-- Welcome -->
             <div id="welcome-content" class="hidden">
                 <section class="card text-center py-10">
                     <h2 class="text-4xl font-extrabold mb-6">Welcome to My Professional Profile!</h2>
@@ -388,103 +380,106 @@
                          class="w-48 h-48 rounded-full object-cover mx-auto mb-6 border-4 shadow-xl"
                          style="border-color: var(--accent-color);">
                     <p class="text-xl leading-relaxed max-w-3xl mx-auto">
-                        Hello! I'm Iresh Agrawal, a dedicated Data Engineer with 3+ years of experience.
-                        I'm passionate about building scalable and efficient data solutions.
+                        Hello! I'm Iresh Agrawal, a dedicated Data Engineer with 3.5+ years of experience.
+                        Specializing in Snowflake, Azure, and Data Vault architectures, I build scalable solutions that drive business value.
                         Explore my profile to learn more about my skills, experience, and achievements.
                     </p>
                 </section>
             </div>
 
-            <!-- Cover Letter Content Section -->
+            <!-- Cover Letter -->
             <div id="cover-letter-content" class="hidden">
                 <section id="cover-letter" class="card">
                     <h2 class="section-heading">Cover Letter</h2>
                     <div class="leading-relaxed space-y-4 prose max-w-none mb-8">
                         <p>Dear Hiring Manager,</p>
-                        <p>I am writing to express my enthusiastic interest in the Data Engineer position at your esteemed organization. With nearly three years of hands-on experience leveraging Azure cloud technologies, Spark SQL, Delta Lake, and robust big data solutions, I am driven by a passion for architecting scalable, high-performance data systems. I am eager to bring this dedication and expertise to your team.</p>
-                        <p>During my tenure at Capgemini, I have had the privilege of leading critical data initiatives, including the design and optimization of intricate ETL pipelines using Azure Data Factory, Azure Data Lake Storage, and Azure Databricks. My strong proficiency in Scala, SQL, and Python has consistently enabled me to develop efficient solutions that have significantly enhanced data processing speeds and reliability. Furthermore, I possess a solid foundation in system integration, relational and dimensional modeling, and the full software development lifecycle (SDLC).</p>
-                        <p>My recent accomplishments include:</p>
+                        <p>I am writing to express my enthusiastic interest in the Data Engineer position at your organization. With over 3.5 years of hands-on experience, I have evolved from building foundational data pipelines to architecting complex Data Vault solutions and orchestrating CI/CD workflows across both Azure and Snowflake ecosystems. I am driven by a passion for building scalable, high-performance systems that directly support critical business analytics.</p>
+                        <p>In my current role as a <strong>Software Engineer - Senior Executive at EXL Service</strong>, I support a global insurance leader (AIG) by designing sophisticated Data Vault 2.0 architectures. My work involves developing Clean, Raw, and Business Vault layers using Hubs, Links, and Satellites to ensure auditable historical tracking. Beyond data modeling, I have taken ownership of the DevOps lifecycle, using Jenkins and GitHub to manage XML-based database change logs and automate schema deployments across development, QA, and production environments.</p>
+                        <p>Previously, during my tenure at <strong>Capgemini</strong>, I led critical data initiatives for a global retail giant (Unilever). My focus was on high-volume optimization and platform migration using Azure Databricks and PySpark. I successfully led a Unity Catalog migration that resulted in a 98% reduction in production issues and optimized data migration processes to reduce runtime by 62.5%.</p>
+                        <p>My core technical competencies and achievements include:</p>
                         <ul class="list-disc list-inside space-y-1 ml-4">
-                            <li>Improving pipeline efficiency by 40% through advanced SQL and PySpark optimization techniques.</li>
-                            <li>Successfully leading a Unity Catalog migration project that reduced production issues by an impressive 98%.</li>
-                            <li>Managing over 100 diverse data sources with Azure Data Factory, resulting in a 50% reduction in processing time.</li>
-                            <li>Automating ETL processes, which effectively reduced manual intervention by 40%.</li>
-                            <li>Enhancing reporting capabilities with impactful Power BI dashboards, boosting reporting efficiency by 45%.</li>
+                            <li><strong>Cloud & Architecture:</strong> Mastery of Snowflake (Data Vault 2.0) and Azure Databricks (Medallion Architecture).</li>
+                            <li><strong>DevOps Orchestration:</strong> Managing CI/CD pipelines via Jenkins and version control via GitHub to streamline multi-project releases.</li>
+                            <li><strong>Performance Engineering:</strong> Improving pipeline efficiency by 40% through advanced SQL and PySpark optimization.</li>
+                            <li><strong>Reliability:</strong> Reducing manual intervention by 40% through rigorous ETL automation.</li>
                         </ul>
-                        <p>Beyond my technical skills, I am Microsoft Certified: Azure Data Engineer Associate (DP-203), and also hold certifications in Azure Fundamentals and Databricks Generative AI. I approach every challenge with a problem-solving mindset and a strong commitment to collaborative team efforts, always ensuring that data solutions directly contribute to achieving business objectives.</p>
-                        <p>I am confident that my skills, energy, and unwavering commitment to excellence align perfectly with your team's goals. Thank you for considering my application. I look forward to the opportunity to discuss how I can contribute to your organization's continued success in its data journey.</p>
-                        <p>Best regards,<br>Iresh Agrawal</p>
+                        <p>In addition to my experience, I am Microsoft Certified: Azure Data Engineer Associate (DP-203) and hold certifications in Databricks Generative AI. I approach every challenge with a solution-oriented mindset, ensuring that technical execution always aligns with business goals.</p>
+                        <p>I am confident that my blend of modern data architecture, cloud expertise, and DevOps maturity aligns perfectly with your team's goals. Thank you for considering my application. I look forward to the opportunity to discuss how I can contribute to your organization's continued success in its data journey.</p>
+                        <p>Sincerely,<br>Iresh Agrawal</p>
                     </div>
-                    <a href="IreshAgrawal_CoverLetter.pdf" download="IreshAgrawal_CoverLetter.pdf" class="primary-button inline-block">
+                    <a href="IreshAgrawal_CoverLetter.pdf" download="IreshAgrawal_CoverLetter.pdf" class="primary-button">
                         Download Cover Letter
                     </a>
                 </section>
             </div>
 
-            <!-- Resume Content Section -->
+            <!-- Resume Content -->
             <div id="resume-content" class="hidden space-y-8">
                 <section id="summary" class="card">
                     <h2 class="section-heading">Summary</h2>
                     <div class="leading-relaxed mb-8">
                         <p>
-                            Results-driven Data Engineer with 3+ years of expertise in cloud data engineering and ETL development.
-                            Proficient in Azure Data Factory, Databricks, SQL, PySpark for building scalable data pipelines using Medallion architecture.
-                            Demonstrated success in optimizing data workflows, reducing processing times by up to 62.5%, and implementing data
-                            governance frameworks. Collaborative team player experienced in translating business requirements into actionable data
-                            solutions while ensuring high performance and reliability.
+                            Results-driven Data Engineer with <strong>3.5+ years</strong> of experience designing scalable data solutions across <strong>Azure Databricks</strong> and <strong>Snowflake</strong> platforms. 
+                            Expert in complex data modelling, proficient in both <strong>Medallion</strong> and <strong>Data Vault 2.0</strong> architectures for global Retail and Insurance clients. 
+                            Skilled in PySpark, SQL, and Shell scripting, with deep expertise in CI/CD orchestration (Jenkins) and database change management. 
+                            Proven track record of optimizing pipeline performance by 62.5% and ensuring 100% SLA compliance through rigorous automation and testing.
                         </p>
                     </div>
-                    <a href="IreshAgrawal_resume.pdf" download="IreshAgrawal_resume.pdf" class="primary-button inline-block">
+                    <a href="IreshAgrawal_resume.pdf" download="IreshAgrawal_resume.pdf" class="primary-button">
                         Download Resume
                     </a>
                 </section>
 
                 <section id="skills" class="card">
-                    <h2 class="section-heading">Core Competencies</h2>
+                    <h2 class="section-heading">Technical Skills</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <div>
-                            <h3 class="text-lg font-semibold mb-2">Cloud Platforms</h3>
+                            <h3 class="text-lg font-semibold mb-2">Cloud & DW</h3>
                             <ul class="list-disc list-inside space-y-1">
+                                <li>Snowflake</li>
                                 <li>Azure Databricks</li>
-                                <li>Azure Data Factory</li>
-                                <li>Azure Data Lake Gen2</li>
-                                <li>Databricks Unity Catalog</li>
+                                <li>Azure Data Factory (ADF)</li>
+                                <li>AWS S3 & ADLS Gen2</li>
+                                <li>Unity Catalog</li>
                             </ul>
                         </div>
                         <div>
-                            <h3 class="text-lg font-semibold mb-2">Programming</h3>
+                            <h3 class="text-lg font-semibold mb-2">Languages</h3>
                             <ul class="list-disc list-inside space-y-1">
-                                <li>SQL</li>
-                                <li>PySpark</li>
-                                <li>Scala</li>
+                                <li>SQL (Advanced)</li>
+                                <li>PySpark & Scala</li>
+                                <li>Shell Scripting</li>
+                                <li>Python & XML</li>
                             </ul>
                         </div>
                         <div>
-                            <h3 class="text-lg font-semibold mb-2">Data Engineering</h3>
+                            <h3 class="text-lg font-semibold mb-2">Data Architecture</h3>
                             <ul class="list-disc list-inside space-y-1">
-                                <li>ETL/ELT Pipeline Development</li>
-                                <li>Data Warehousing & Modelling</li>
-                                <li>Data Governance</li>
+                                <li>Data Vault 2.0 (Hubs/Links/Sats)</li>
+                                <li>Medallion Architecture</li>
+                                <li>ETL/ELT Design</li>
+                                <li>Star Schema</li>
                             </ul>
                         </div>
                         <div>
-                            <h3 class="text-lg font-semibold mb-2">Performance Tuning</h3>
+                            <h3 class="text-lg font-semibold mb-2">DevOps & Tools</h3>
                             <ul class="list-disc list-inside space-y-1">
-                                <li>Storage Optimization</li>
-                                <li>Shuffle Optimization</li>
+                                <li>Jenkins & GitHub/Git</li>
+                                <li>Azure DevOps CI/CD</li>
+                                <li>JIRA & Rally</li>
+                                <li>DBVisualizer & Putty</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold mb-2">Optimization</h3>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Storage & Shuffle Tuning</li>
+                                <li>Upsert Strategies</li>
                                 <li>Distributed Processing</li>
                             </ul>
                         </div>
                         <div>
-                            <h3 class="text-lg font-semibold mb-2">DevOps & Collaboration</h3>
-                            <ul class="list-disc list-inside space-y-1">
-                                <li>CI/CD</li>
-                                <li>Agile Methodologies</li>
-                                <li>JIRA</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-semibold mb-2">Business Intelligence</h3>
+                            <h3 class="text-lg font-semibold mb-2">Visualization</h3>
                             <ul class="list-disc list-inside space-y-1">
                                 <li>Microsoft Power BI</li>
                                 <li>Microsoft Excel</li>
@@ -496,39 +491,51 @@
                 <section id="experience" class="card">
                     <h2 class="section-heading">Professional Experience</h2>
                     <div class="experience-timeline">
+                        <!-- EXL -->
+                        <div class="experience-item">
+                            <h3 class="text-xl font-semibold">Software Engineer - Senior Executive</h3>
+                            <p class="company">EXL Services</p>
+                            <p class="details">July 2025 - Present | Gurgaon, Haryana</p>
+                            <p class="text-sm text-gray-500 italic mb-2">Client: Global Insurance Leader (AIG)</p>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li><strong>Data Vault Engineering:</strong> Developed scalable Data Vault 2.0 models (Clean, Raw, & Business Vault) utilizing Hubs, Links, and Satellites.</li>
+                                <li><strong>CI/CD Orchestration:</strong> Orchestrated database schema evolution via Jenkins and GitHub using XML-based Master Change Logs.</li>
+                                <li><strong>Pipeline Automation:</strong> Executed automated Shell-based data loads via SSH into Snowflake (AWS S3 backend).</li>
+                                <li><strong>Release Management:</strong> Streamlined multi-project deployments (e.g., GOALD, IFED) by configuring Jenkins build parameters.</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Capgemini Role 1 -->
                         <div class="experience-item">
                             <h3 class="text-xl font-semibold">Associate Consultant</h3>
                             <p class="company">Capgemini</p>
-                            <p class="details">November 2023 - Present | Gurgaon, Haryana</p>
+                            <p class="details">November 2023 - July 2025 | Gurgaon, Haryana</p>
+                            <p class="text-sm text-gray-500 italic mb-2">Client: Global FMCG/Retail Giant (Unilever)</p>
                             <ul class="list-disc list-inside mt-2 space-y-1">
-                                <li>Optimized data pipelines using SQL/PySpark, improving efficiency by 40%.</li>
-                                <li>Led Unity Catalog migration with 98% reduction in production issues.</li>
-                                <li>Orchestrated 100+ data sources through ADF, cutting processing time by 50%.</li>
-                                <li>Optimized 50+ TB data migration, reducing runtime by 62.5%.</li>
-                                <li>Managed DevOps workflows, increasing deployment efficiency by 30%.</li>
-                                <li>Delivered 10+ critical projects with 100% on-time completion and zero defects.</li>
+                                <li><strong>Migration:</strong> Led Unity Catalog implementation and a 50TB+ data migration, reducing runtime by 62.5% and production issues by 98%.</li>
+                                <li><strong>Optimization:</strong> Optimized SQL/PySpark pipelines and orchestrated 100+ ADF data sources, cutting processing time by 50%.</li>
+                                <li><strong>DevOps:</strong> Managed DevOps workflows and delivered 10+ critical projects with 100% on-time completion.</li>
                             </ul>
                         </div>
+
+                        <!-- Capgemini Role 2 -->
                         <div class="experience-item">
                             <h3 class="text-xl font-semibold">Senior Analyst</h3>
                             <p class="company">Capgemini</p>
                             <p class="details">July 2022 - October 2023 | Bengaluru, Karnataka</p>
                             <ul class="list-disc list-inside mt-2 space-y-1">
-                                <li>Resolved 95% of production issues within SLA, reducing downtime by 40%.</li>
-                                <li>Created Power BI dashboards improving reporting efficiency by 45%.</li>
-                                <li>Automated ETL processes, reducing manual intervention by 40%.</li>
-                                <li>Implemented regression testing frameworks ensuring 99.9% system stability.</li>
-                                <li>Received performance awards for innovative data engineering solutions.</li>
+                                <li><strong>Support:</strong> Resolved 95% of production issues within SLA and ensured 99.9% system stability.</li>
+                                <li><strong>Automation:</strong> Automated ETL processes and developed Power BI dashboards, reducing manual intervention by 40%.</li>
                             </ul>
                         </div>
+
+                        <!-- Capgemini Intern -->
                         <div class="experience-item">
                             <h3 class="text-xl font-semibold">Data Engineering Intern</h3>
                             <p class="company">Capgemini</p>
                             <p class="details">January 2022 - June 2022 | Bengaluru, Karnataka</p>
                             <ul class="list-disc list-inside mt-2 space-y-1">
-                                <li>Created simple data pipelines in Azure Data Factory for structured/semi-structured data.</li>
-                                <li>Participated in code reviews and testing to ensure high-quality deliverables.</li>
-                                <li>Collaborated on troubleshooting data quality issues across environments.</li>
+                                <li>Created Azure Data Factory pipelines for structured/semi-structured data and collaborated on code reviews.</li>
                             </ul>
                         </div>
                     </div>
@@ -540,7 +547,7 @@
                         <div class="experience-item">
                             <h3 class="text-xl font-semibold">Bachelor of Technology in Electronics and Communication</h3>
                             <p class="company">Vellore Institute of Technology</p>
-                            <p class="details">July 2018 - June 2022 | Bhopal, Madhya Pradesh</p>
+                            <p class="details">Aug 2018 - Sept 2022 | Bhopal, Madhya Pradesh</p>
                         </div>
                     </div>
                 </section>
@@ -550,32 +557,29 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
                             <h3 class="text-lg font-semibold mb-3">Key Achievements</h3>
-                            <ul class="list-disc list-inside space-y-1">
-                                <li><strong>Silver Star Award:</strong> Awarded twice for exceptional contributions to data engineering projects and client satisfaction.</li>
+                            <ul class="list-disc list-inside space-y-2">
+                                <li><strong>Exceeding Award (EXL):</strong> For exceptional contributions to data engineering projects and client satisfaction.</li>
+                                <li><strong>Silver Star Award (Capgemini):</strong> Awarded twice for exceptional contributions.</li>
                             </ul>
                         </div>
                         <div>
                             <h3 class="text-lg font-semibold mb-3">Certifications</h3>
                             <ul class="space-y-3">
-                                <li class="certification-item flex items-center gap-3">
-                                    <img src="fabric.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/36x36/6366f1/ffffff?text=F';" alt="Fabric Analytics Engineer Associate Badge">
-                                    <a href="https://learn.microsoft.com/api/credentials/share/en-us/IreshAgrawal-1361/FBA4562DEE33025F?sharingId=4760308E24E54F0C" target="_blank" rel="noopener noreferrer" class="primary-link font-medium">Fabric Analytics Engineer Associate</a>
-                                </li>
                                  <li class="certification-item flex items-center gap-3">
                                     <img src="associate.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/36x36/6366f1/ffffff?text=D';" alt="Azure Data Engineer Associate Badge">
-                                    <a href="https://learn.microsoft.com/api/credentials/share/en-us/IreshAgrawal-1361/E62B1E4E8EE38CF2?sharingId=4760308E24E54F0C" target="_blank" rel="noopener noreferrer" class="primary-link font-medium">Azure Data Engineer Associate</a>
+                                    <a href="#" class="primary-link font-medium">Azure Data Engineer Associate (DP-203)</a>
+                                </li>
+                                <li class="certification-item flex items-center gap-3">
+                                    <img src="fabric.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/36x36/6366f1/ffffff?text=F';" alt="Fabric Analytics Engineer Associate Badge">
+                                    <a href="#" class="primary-link font-medium">Fabric Analytics Engineer Associate</a>
                                 </li>
                                 <li class="certification-item flex items-center gap-3">
                                     <img src="Fundamentals.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/36x36/6366f1/ffffff?text=A';" alt="Azure Fundamentals Badge">
-                                    <a href="https://learn.microsoft.com/api/credentials/share/en-us/IreshAgrawal-1361/974F69021B0DA09D?sharingId=4760308E24E54F0C" target="_blank" rel="noopener noreferrer" class="primary-link font-medium">Azure Fundamentals</a>
+                                    <a href="#" class="primary-link font-medium">Azure Fundamentals</a>
                                 </li>
                                 <li class="certification-item flex items-center gap-3">
                                     <img src="Generative-AI-fundamentals.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/36x36/6366f1/ffffff?text=G';" alt="Databricks GenAI Fundamentals Badge">
-                                    <a href="https://credentials.databricks.com/ecb9e6b1-d9f8-46a9-ac93-bb97d90b6895#acc.OzP3EoQ2" target="_blank" rel="noopener noreferrer" class="primary-link font-medium">Databricks: Generative AI Fundamentals</a>
-                                </li>
-                                <li class="certification-item flex items-center gap-3">
-                                    <img src="Capgemini.jpeg" onerror="this.onerror=null;this.src='https://placehold.co/36x36/6366f1/ffffff?text=C';" alt="Capgemini Badge">
-                                    <span class="font-medium">Capgemini: Jr. Data Engineer & Data Engineer Level 1</span>
+                                    <a href="#" class="primary-link font-medium">Databricks: GenAI Fundamentals</a>
                                 </li>
                             </ul>
                         </div>
@@ -583,25 +587,22 @@
                 </section>
             </div>
 
-            <!-- Additional Details Content Section -->
+            <!-- Additional Details -->
             <div id="additional-details-content" class="hidden">
                 <section class="card">
                     <h2 class="section-heading">Additional Details</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                         <p><strong>Email ID:</strong> iresh.agrawal23@gmail.com</p>
-                        <p><strong>Mobile No.:</strong> 8707481550</p>
+                        <p><strong>Mobile No.:</strong> +91 8707481550</p>
                         <p><strong>Name:</strong> Iresh Agrawal</p>
                         <p><strong>Date of Birth:</strong> 23-02-2001</p>
                         <p><strong>Highest Qualification:</strong> B.Tech (ECE)</p>
-                        <p><strong>Preferred Job Location:</strong> Gurgaon/Noida/Hyderabad</p>
-                        <p><strong>Current/Last Employer:</strong> Capgemini</p>
-                        <p><strong>Serving Notice Period:</strong> Yes (LWD: 4th July)</p>
-                        <p><strong>Currently Holding Offer:</strong> <span class="font-bold text-green-500">11 LPA</span></p>
-                        <p><strong>Joining and Location:</strong> 14th July 2025 Gurgaon</p>
-                        <p><strong>Current CTC:</strong> 9.5 LPA</p>
-                        <p><strong>Expected CTC:</strong> 15 LPA <span class="italic opacity-70">(negotiable)</span></p>
-                        <div class="md:col-span-2">
-                             <p><strong>Skills:</strong> ETL, SQL, Azure DataBricks, Unity Catalog, Azure Data Factory, Data Warehousing, Data Modelling, ADLS, Scala, Pyspark, Python, Microsoft Power BI</p>
+                        <p><strong>Preferred Locations:</strong> Gurgaon/Noida/Hyderabad</p>
+                        <p><strong>Current Employer:</strong> EXL Services</p>
+                        <p><strong>Total Experience:</strong> 3.5+ Years</p>
+                        <div class="md:col-span-2 mt-4">
+                             <p class="mb-2 font-bold">Skill Summary:</p>
+                             <p class="leading-relaxed">Data Vault 2.0, Snowflake, Azure Databricks, Medallion Architecture, Jenkins, CI/CD, Shell Scripting, Python, SQL, XML, Power BI.</p>
                         </div>
                     </div>
                 </section>
@@ -616,7 +617,7 @@
         </div>
 
         <footer class="w-full mt-12 py-4 text-center text-sm">
-            <p>&copy; 2024 Iresh Agrawal. All rights reserved.</p>
+            <p>&copy; 2025 Iresh Agrawal. All rights reserved.</p>
         </footer>
     </div>
 
@@ -704,11 +705,8 @@
         
         // --- Initial Load ---
         document.addEventListener('DOMContentLoaded', () => {
-            // Load saved theme or default to light
             const savedTheme = localStorage.getItem('theme') || 'light';
             updateThemeUI(savedTheme);
-
-            // Show default section
             showSection('welcome-content');
         });
     </script>
