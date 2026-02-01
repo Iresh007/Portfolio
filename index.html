@@ -518,7 +518,9 @@
             <div id="resume-content" class="hidden">
                 <section class="card mb-8">
                     <h2 class="section-heading">Resume</h2>
-                    
+                    <!-- Fallback download links (GitHub Pages safe) -->
+                    <a id="resumePdfLink" href="IreshAgrawal_resume.pdf" download="IreshAgrawal_resume.pdf" style="display:none;"></a>
+                    <a id="resumeDocxLink" href="IreshAgrawal_resume.docx" download="IreshAgrawal_resume.docx" style="display:none;"></a>
                     <!-- Download Buttons -->
                     <div class="download-buttons mb-6">
                         <button onclick="downloadResume()" class="primary-button">
@@ -823,17 +825,29 @@
         const savedTheme = localStorage.getItem('theme') || 'light';
         updateThemeUI(savedTheme);
 
-        // Download Resume as PDF
+       // Download Resume as PDF (GitHub Pages safe)
         function downloadResume() {
-            window.open('Iresh_Agrawal_Resume_EXL_V7_0.docx', '_blank');
+            const pdfLink = document.getElementById('resumePdfLink');
+            if (pdfLink) {
+                pdfLink.click();
+            } else {
+                window.open('IreshAgrawal_resume.pdf', '_blank');
+            }
         }
 
-        // Download Resume as DOCX
+        // Download Resume as DOCX (GitHub Pages safe)
         function downloadResumeDocx() {
-            const link = document.createElement('a');
-            link.href = 'Iresh_Agrawal_Resume_EXL_V7_0.docx';
-            link.download = 'Iresh_Agrawal_Resume.docx';
-            link.click();
+            const docxLink = document.getElementById('resumeDocxLink');
+            if (docxLink) {
+                docxLink.click();
+            } else {
+                const link = document.createElement('a');
+                link.href = 'IreshAgrawal_resume.docx';
+                link.download = 'IreshAgrawal_resume.docx';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
         }
 
         // Generate and Download Cover Letter with Company Name
