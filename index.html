@@ -825,16 +825,19 @@
 
         // Download Resume as PDF
         function downloadResume() {
-            window.open('Iresh_Agrawal_Resume_EXL_V7_0.docx', '_blank');
+            window.open('IreshAgrawal_resume.pdf', '_blank');
         }
 
         // Download Resume as DOCX
         function downloadResumeDocx() {
             const link = document.createElement('a');
-            link.href = 'Iresh_Agrawal_Resume_EXL_V7_0.docx';
-            link.download = 'Iresh_Agrawal_Resume.docx';
+            link.href = 'IreshAgrawal_resume.docx';
+            link.download = 'IreshAgrawal_resume.docx';
+            document.body.appendChild(link);
             link.click();
+            document.body.removeChild(link);
         }
+
 
         // Generate and Download Cover Letter with Company Name
         function generateCoverLetter() {
