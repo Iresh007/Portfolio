@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iresh Agrawal — CV</title>
+<style>
+  @font-face {
+    font-family: 'Space Grotesk';
+    src: url('./fonts/space-grotesk-latin.woff2') format('woff2');
+    font-weight: 300 700;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Space Grotesk';
+    src: url('./fonts/space-grotesk-latin-ext.woff2') format('woff2');
+    font-weight: 300 700;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+
+  @font-face {
+    font-family: 'DM Sans';
+    src: url('./fonts/dm-sans-latin.woff2') format('woff2');
+    font-weight: 100 1000;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'DM Sans';
+    src: url('./fonts/dm-sans-latin-ext.woff2') format('woff2');
+    font-weight: 100 1000;
+    font-style: normal;
+    font-display: swap;
+    unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    line-height: 1.5;
+    color: #1a1a2e;
+    background: #ffffff;
+    padding: 0;
+    margin: 0;
+  }
+
+  .page {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2px 0;
+  }
+
+  /* === HEADER === */
+  .header {
+    margin-bottom: 20px;
+  }
+
+  .header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a2e;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+    line-height: 1.1;
+  }
+
+  .header-gradient {
+    height: 2px;
+    background: linear-gradient(to right, hsl(187, 74%, 32%), hsl(270, 70%, 45%));
+    border-radius: 1px;
+    margin-bottom: 10px;
+  }
+
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5px;
+    line-height: 1.4;
+    color: #555;
+  }
+
+  .contact-row a {
+    color: #555;
+    text-decoration: none;
+  }
+
+  .contact-row .separator {
+    color: #ccc;
+  }
+
+  /* === SECTIONS === */
+  .section {
+    margin-bottom: 18px;
+  }
+
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: hsl(187, 74%, 32%);
+    border-bottom: 1.5px solid #e2e2e2;
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  /* === PROFESSIONAL SUMMARY === */
+  .summary-text {
+    font-size: 11px;
+    line-height: 1.7;
+    color: #2f2f2f;
+  }
+
+  a {
+    white-space: nowrap;
+  }
+
+  /* === CORE COMPETENCIES === */
+  .competencies-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .competency-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    color: hsl(187, 74%, 28%);
+    background: hsl(187, 40%, 95%);
+    padding: 4px 10px;
+    border-radius: 3px;
+    border: 1px solid hsl(187, 40%, 88%);
+  }
+
+  /* === WORK EXPERIENCE === */
+  .job {
+    margin-bottom: 14px;
+  }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 4px;
+  }
+
+  .job-company {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: hsl(270, 70%, 45%);
+  }
+
+  .job-period {
+    font-size: 10.5px;
+    color: #777;
+    white-space: nowrap;
+  }
+
+  .job-role {
+    font-size: 11px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 6px;
+  }
+
+  .job-location {
+    font-size: 10px;
+    color: #888;
+  }
+
+  .job ul {
+    padding-left: 18px;
+    margin-top: 6px;
+  }
+
+  .job li {
+    font-size: 10.5px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 4px;
+  }
+
+  .job li strong {
+    font-weight: 600;
+  }
+
+  /* === PROJECTS === */
+  .project {
+    margin-bottom: 12px;
+  }
+
+  .project-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: hsl(270, 70%, 45%);
+  }
+
+  .project-badge {
+    font-size: 9px;
+    font-weight: 500;
+    color: hsl(187, 74%, 32%);
+    background: hsl(187, 40%, 95%);
+    padding: 1px 6px;
+    border-radius: 2px;
+    margin-left: 6px;
+  }
+
+  .project-desc {
+    font-size: 10.5px;
+    color: #444;
+    margin-top: 3px;
+    line-height: 1.55;
+  }
+
+  .project-tech {
+    font-size: 9.5px;
+    color: #888;
+    margin-top: 3px;
+  }
+
+  /* === EDUCATION === */
+  .edu-item {
+    margin-bottom: 8px;
+  }
+
+  .edu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .edu-title {
+    font-weight: 600;
+    font-size: 11px;
+    color: #333;
+  }
+
+  .edu-org {
+    color: hsl(270, 70%, 45%);
+    font-weight: 500;
+  }
+
+  .edu-year {
+    font-size: 10px;
+    color: #777;
+    white-space: nowrap;
+  }
+
+  .edu-desc {
+    font-size: 10px;
+    color: #666;
+    margin-top: 2px;
+    line-height: 1.5;
+  }
+
+  /* === CERTIFICATIONS === */
+  .cert-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+
+  .cert-title {
+    font-size: 10.5px;
+    font-weight: 500;
+    color: #333;
+  }
+
+  .cert-org {
+    color: hsl(270, 70%, 45%);
+  }
+
+  .cert-year {
+    font-size: 10px;
+    color: #777;
+    white-space: nowrap;
+  }
+
+  /* === SKILLS === */
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+  }
+
+  .skill-item {
+    font-size: 10.5px;
+    color: #444;
+  }
+
+  .skill-category {
+    font-weight: 600;
+    color: #333;
+    font-size: 10.5px;
+  }
+
+  /* === PRINT === */
+  @media print {
+    body {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      padding: 0;
+    }
+  }
+
+  /* === PAGE BREAK CONTROL === */
+  .avoid-break,
+  .job,
+  .project,
+  .edu-item,
+  .cert-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header avoid-break">
+    <h1>Iresh Agrawal</h1>
+    <div class="header-gradient"></div>
+    <div class="contact-row">
+      <span>8707481550</span>
+      <span class="separator">|</span>
+      <a href="mailto:iresh.agrawal23@gmail.com">iresh.agrawal23@gmail.com</a>
+      <span class="separator">|</span>
+      <a href="https://linkedin.com/in/iresh-agrawal23">linkedin.com/in/iresh-agrawal23</a>
+      <span class="separator">|</span>
+      <span>Gurgaon, India</span>
+    </div>
+  </div>
+
+  <!-- PROFESSIONAL SUMMARY -->
+  <div class="section avoid-break">
+    <div class="section-title">Professional Summary</div>
+    <div class="summary-text">
+      Results-driven Data Engineer with 3.9+ years of experience architecting and optimizing cloud-native data platforms on Azure, Databricks, and Snowflake. Proven track record of delivering enterprise-scale data solutions that achieve 60%+ performance improvements and 100% SLA compliance with zero production defects. Expert in building scalable ETL/ELT pipelines using PySpark, implementing Data Vault 2.0 and Medallion Architecture, and driving successful Unity Catalog migrations for Fortune 500 retail and insurance clients. Microsoft Certified Azure Data Engineer (DP-203) with strong DevOps and CI/CD automation capabilities.
+    </div>
+  </div>
+
+  <!-- CORE COMPETENCIES -->
+  <div class="section">
+    <div class="section-title">Core Competencies</div>
+    <div class="competencies-grid">
+      <span class="competency-tag">Azure Databricks</span>
+      <span class="competency-tag">Snowflake</span>
+      <span class="competency-tag">Azure Data Factory</span>
+      <span class="competency-tag">ADLS Gen2</span>
+      <span class="competency-tag">Unity Catalog</span>
+      <span class="competency-tag">AWS S3</span>
+      <span class="competency-tag">Apache Spark</span>
+      <span class="competency-tag">PySpark</span>
+      <span class="competency-tag">Distributed Data Processing</span>
+      <span class="competency-tag">Batch &amp; Stream Processing</span>
+      <span class="competency-tag">SQL Optimization</span>
+      <span class="competency-tag">Data Vault 2.0</span>
+      <span class="competency-tag">Medallion Architecture</span>
+      <span class="competency-tag">ETL/ELT Pipelines</span>
+      <span class="competency-tag">Dimensional Modeling</span>
+      <span class="competency-tag">Star Schema</span>
+      <span class="competency-tag">Data Governance</span>
+      <span class="competency-tag">Python</span>
+      <span class="competency-tag">Scala</span>
+      <span class="competency-tag">Shell Scripting</span>
+      <span class="competency-tag">Jenkins</span>
+      <span class="competency-tag">Azure DevOps</span>
+      <span class="competency-tag">GitHub</span>
+      <span class="competency-tag">Power BI</span>
+      <span class="competency-tag">CI/CD Automation</span>
+    </div>
+  </div>
+
+  <!-- WORK EXPERIENCE -->
+  <div class="section">
+    <div class="section-title">Work Experience</div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-company">EXL Services (via Clairvoyant)</span>
+        <span class="job-period">July 2025 – Present</span>
+      </div>
+      <div class="job-role">Senior Executive – Software Engineer</div>
+      <div class="job-location">Gurgaon / Pune, India &nbsp;·&nbsp; Domain: Insurance</div>
+      <ul>
+        <li>Architected enterprise-grade <strong>Data Vault 2.0</strong> models in Snowflake (Raw Vault, Business Vault, Clean Vault) across multiple insurance subject areas, establishing audit-compliant and analytics-ready data foundations supporting regulatory reporting and business intelligence.</li>
+        <li>Orchestrated <strong>20+ database schema releases</strong> across Dev, QA, and Production environments using Jenkins CI/CD and GitHub version control, implementing XML-based master changelogs for controlled, auditable database change management.</li>
+        <li>Engineered standardised data ingestion frameworks using Shell scripting and SSH for automated Snowflake data loads from AWS S3, improving deployment reliability by <strong>100%</strong>.</li>
+        <li>Led CI/CD implementation for two parallel development tracks (GOALD, NAVINS), reducing validation cycles by <strong>35%</strong> using DBVisualizer.</li>
+        <li>Collaborated with 3+ client stakeholders, business analysts, and QA teams to translate functional requirements into production-ready Snowflake data models across agile sprint cycles.</li>
+        <li>Mentored 3+ junior data engineers on Snowflake development best practices, Data Vault 2.0 modelling patterns, and enterprise release management processes.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-company">Capgemini</span>
+        <span class="job-period">November 2023 – June 2025</span>
+      </div>
+      <div class="job-role">Associate Consultant</div>
+      <div class="job-location">Gurgaon &amp; Bengaluru, India &nbsp;·&nbsp; Domain: FMCG / Retail</div>
+      <ul>
+        <li>Spearheaded <strong>Unity Catalog migration</strong> for a 50TB+ enterprise data platform on Azure Databricks, implementing Medallion Architecture (Bronze-Silver-Gold) that achieved a <strong>62.5% reduction</strong> in pipeline execution time and <strong>98% decrease</strong> in production defects.</li>
+        <li>Optimised complex data transformation pipelines processing <strong>100+ ADF sources</strong> using advanced PySpark and SQL techniques, increasing throughput by 40% and reducing data latency by 50% for time-sensitive retail analytics.</li>
+        <li>Managed end-to-end CI/CD lifecycle for <strong>10+ production releases</strong> via Azure DevOps, achieving 100% on-time delivery with zero rollback incidents.</li>
+        <li>Collaborated with onshore stakeholders and QA teams to validate production releases, ensuring data accuracy, integrity, and operational stability across global retail operations.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-company">Capgemini</span>
+        <span class="job-period">July 2022 – October 2023</span>
+      </div>
+      <div class="job-role">Senior Analyst</div>
+      <div class="job-location">Gurgaon, India &nbsp;·&nbsp; Domain: FMCG / Retail</div>
+      <ul>
+        <li>Resolved <strong>95% of critical production incidents within SLA</strong> through systematic root cause analysis, maintaining 99.9% platform uptime for mission-critical retail data systems.</li>
+        <li>Implemented comprehensive regression validation frameworks for ETL/ELT pipelines, reducing post-release failures by <strong>40%</strong> and minimising unplanned production downtime.</li>
+        <li>Developed <strong>Power BI dashboards</strong> and automated ETL workflows that reduced manual reporting effort by 40% and improved BI delivery turnaround time by 45%.</li>
+        <li>Partnered with business users and QA teams to validate analytical outputs across multiple reporting dashboards, ensuring accuracy of business-critical metrics.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="job-company">Capgemini</span>
+        <span class="job-period">January 2022 – June 2022</span>
+      </div>
+      <div class="job-role">Data Engineering Intern</div>
+      <div class="job-location">Gurgaon, India</div>
+      <ul>
+        <li>Developed Azure Data Factory pipelines for ingestion and transformation of structured and semi-structured datasets from diverse source systems.</li>
+        <li>Conducted comprehensive SQL-based data quality validation and testing across development and UAT environments.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section avoid-break">
+    <div class="section-title">Key Projects</div>
+
+    <div class="project">
+      <span class="project-title">Unity Catalog Migration &amp; Medallion Architecture</span>
+      <span class="project-badge">Capgemini</span>
+      <div class="project-desc">Led end-to-end migration of a 50TB+ enterprise Azure Databricks platform to Unity Catalog, redesigning data flows across Bronze-Silver-Gold layers. Delivered a 62.5% reduction in pipeline execution time and near-elimination of production defects.</div>
+      <div class="project-tech">Azure Databricks · Unity Catalog · PySpark · Azure DevOps · Medallion Architecture</div>
+    </div>
+
+    <div class="project">
+      <span class="project-title">Enterprise Data Vault 2.0 on Snowflake</span>
+      <span class="project-badge">EXL Services</span>
+      <div class="project-desc">Architected Raw Vault, Business Vault, and Clean Vault models across multiple insurance subject areas in Snowflake. Established audit-compliant data foundations supporting regulatory reporting, with Jenkins-automated release management across Dev, QA, and Production.</div>
+      <div class="project-tech">Snowflake · Data Vault 2.0 · Jenkins · GitHub · Shell Scripting · AWS S3</div>
+    </div>
+
+    <div class="project">
+      <span class="project-title">ADF Pipeline Optimisation &amp; Retail Analytics</span>
+      <span class="project-badge">Capgemini</span>
+      <div class="project-desc">Re-engineered 100+ Azure Data Factory transformation pipelines using advanced PySpark and SQL techniques, boosting throughput by 40% and cutting data latency by 50% for time-sensitive retail analytics workloads.</div>
+      <div class="project-tech">Azure Data Factory · PySpark · SQL · ADLS Gen2 · Power BI</div>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section avoid-break">
+    <div class="section-title">Education</div>
+    <div class="edu-item">
+      <div class="edu-header">
+        <span class="edu-title">B.Tech – Electronics &amp; Communication Engineering &nbsp;<span class="edu-org">· Vellore Institute of Technology (VIT), Bhopal</span></span>
+        <span class="edu-year">2018 – 2022</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div class="section avoid-break">
+    <div class="section-title">Certifications</div>
+
+    <div class="cert-item">
+      <span class="cert-title">Databricks Certified Data Engineer Professional &nbsp;<span class="cert-org">· Databricks</span></span>
+    </div>
+    <div class="cert-item">
+      <span class="cert-title">Microsoft Certified: Azure Data Engineer Associate (DP-203) &nbsp;<span class="cert-org">· Microsoft</span></span>
+    </div>
+    <div class="cert-item">
+      <span class="cert-title">Microsoft Certified: Azure Fundamentals (AZ-900) &nbsp;<span class="cert-org">· Microsoft</span></span>
+    </div>
+    <div class="cert-item">
+      <span class="cert-title">Generative AI Fundamentals &nbsp;<span class="cert-org">· Databricks</span></span>
+    </div>
+    <div class="cert-item">
+      <span class="cert-title">Jr. Data Engineer (Level 1 &amp; 2) · Data Engineer Level 1 &nbsp;<span class="cert-org">· Capgemini</span></span>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section avoid-break">
+    <div class="section-title">Skills</div>
+    <div class="skills-grid">
+      <span class="skill-item"><span class="skill-category">Cloud:</span> Azure Databricks, Snowflake, ADF, ADLS Gen2, Unity Catalog, AWS S3</span>
+      <span class="skill-item"><span class="skill-category">Big Data:</span> Apache Spark, PySpark, Batch &amp; Stream Processing, SQL Optimisation</span>
+      <span class="skill-item"><span class="skill-category">Architecture:</span> Data Vault 2.0, Medallion Architecture, Dimensional Modelling, Star Schema</span>
+      <span class="skill-item"><span class="skill-category">Programming:</span> SQL, Python, PySpark, Scala, Shell Scripting, XML</span>
+      <span class="skill-item"><span class="skill-category">DevOps:</span> Jenkins, Azure DevOps, GitHub, Git, Automated Testing &amp; Deployment</span>
+      <span class="skill-item"><span class="skill-category">Tools:</span> DBVisualizer, Power BI, JIRA, Rally, Putty, Microsoft Excel</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
